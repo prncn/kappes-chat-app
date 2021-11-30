@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Bubble from "./Bubble";
 
 export default function TextBox({ bottom, search, send, color, placeholder, childToParent }) {
   const [input, setInput] = useState([]);

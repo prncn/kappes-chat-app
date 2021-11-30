@@ -13,3 +13,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.__section {
+  @apply text-white font-semibold flex flex-col items-center;
+}
+
+.__section-pad {
+  @apply py-3 px-3
+}

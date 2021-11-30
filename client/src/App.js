@@ -1,28 +1,66 @@
+import './index.css';
 import io from 'socket.io-client'
-import { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import TextBox from './TextBox'
-import Bubble from './Bubble'
 import Contact from './Contact'
-import NavButton from './NavButton'
 
 const socket = io.connect('http://localhost:3001');
 
-export default function App() {
-  const chat = [
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis viverra turpis vitae placerat. Praesent pellentesque condimentum ex, eget consectetur felis sagittis non. Cras at facilisis dui, in mollis massa. Integer iaculis nulla semper arcu elementum, auctor bibendum leo vehicula. Integer a lobortis dolor. Donec a aliquet dolor. Pellentesque pretium sem velit, vel tincidunt tellus vestibulum sed. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. ",
-    "Okay, thanks for letting me know! The details have been sent.",
-    "Okay, thanks for letting me know! The details have been sent."
-  ]
-  const [messages, setMessages] = useState(chat);
-  
-  const sectioncss =
-  ' text-white font-semibold flex flex-col items-center py-3 px-3';
-  
-  const childToParent = (e, input) => {
-    e.preventDefault();
-    if(input === '') return;
-    setMessages([...messages, input]);
+function Bubble({ content, mine }) {
+  return (
+    <div className={`p-2 mb-1 w-80 ${mine ? "ml-auto bg-gray-100 text-gray-600" : "mr-auto bg-gray-500 text-white"} rounded font-normal text-xs`}>
+      {content}
+    </div>
+  );
+}
+
+function NavButtonGroup({ children }) {
+  const [active, setActive] = useState('home');
+
+  function switchActive(value) {
+    if(value === active) 
+      return;
+    setActive(value);
+    console.log(value + active);
   }
+
+  return (
+    <>
+      {children.map(child => (
+        <NavButton {...child.props} active={child.props.value === active} onClick={() => switchActive(child.props.value)} key={child.props.value}/>
+      ))}
+    </>
+  );
+}
+
+function NavButton({ icon, active = false, onClick }) {
+  return (
+    <button className={active ? "opacity-100" : "opacity-50 + hover:opacity-80"} onClick={onClick}>
+      <img src={`./${icon}.svg`} alt={icon} className="w-6 my-1" />
+    </button>
+  );
+}
+
+export default function App() {
+  const [messages, setMessages] = useState([]);
+  const [page, setPage] = useState('home');
+
+  function handlePage(e, newPage) {
+    setPage(newPage);
+  }
+
+  function childToParent(e, input) {
+    e.preventDefault();
+    if (input === '') return;
+    socket.emit('send', input);
+    setMessages([...messages, { content: input, mine: true }]);
+  }
+
+  useEffect(() => {
+    socket.on('receive', (content) => {
+      setMessages([...messages, { content, mine: false }])
+    });
+  }, [messages]);
 
   return (
     <>
@@ -33,28 +71,35 @@ export default function App() {
             className="flex rounded-2xl shadow-lg bg-gray-500 overflow-hidden max-w-screen-lg"
             style={{ width: '100%', height: '700px' }}
           >
-            <div className={'flex-none bg-gray-700' + sectioncss}>
+            <div className="flex-none bg-gray-700 __section __section-pad">
               <img src="./iconlogo.svg" alt="logoicon" className="w-9" />
               <div className="flex flex-col justify-center h-4/5">
-                <NavButton icon="iconhome" />
-                <NavButton icon="iconcal" />
-                <NavButton icon="iconchat" />
-                <NavButton icon="iconsearch" />
+                <NavButtonGroup
+                  value={page}
+                  onChange={handlePage}
+                >
+                  <NavButton value="home" icon="iconhome" />
+                  <NavButton value="cal" icon="iconcal" />
+                  <NavButton value="chat" icon="iconchat" />
+                  <NavButton value="search" icon="iconsearch" />
+                </NavButtonGroup>
               </div>
             </div>
-            <div className={'flex-1 bg-gray-100 p-1 w-full h-full' + sectioncss}>
-              <div className="flex flex-col p-4">
-                <TextBox color="bg-white" search placeholder="Search" />
+            <div className="flex-1 bg-gray-100 w-full h-full __section">
+              <div className="flex flex-col">
+                <div className="w-full p-4 py-5">
+                  <TextBox color="bg-white" search placeholder="Search" />
+                </div>
                 <Contact />
                 <Contact />
                 <Contact />
                 <Contact />
               </div>
             </div>
-            <div className={'overflow-y-auto h-full bg-white w-8/12 justify-end' + sectioncss}>
+            <div className="overflow-y-auto h-full bg-white w-8/12 justify-end __section __section-pad">
               <div className="text-gray-300 text-xs font-medium my-2">Monday 5:04PM</div>
               {messages.map((msg, i) => (
-                <Bubble content={msg} mine key={i}/>
+                <Bubble content={msg.content} mine={msg.mine} key={i} />
               ))}
               <TextBox bottom color="bg-gray-100" send placeholder="Type something..." childToParent={childToParent} />
             </div>
