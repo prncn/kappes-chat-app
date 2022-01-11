@@ -57,6 +57,7 @@ export default function TextBox({ bottom, search, send, color, placeholder, chil
           autoComplete="off"
           value={input}
           onChange={e => { setInput(e.target.value) }}
+          spellCheck="false"
         />
       </div>
     </form>
