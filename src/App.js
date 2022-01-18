@@ -10,7 +10,9 @@ export default function App() {
       <Router>
         <Routes>
           <Route path="/chatapp" element={<ChatApp />}></Route>
-          <Route path="/docs" element={<Docs />}></Route>
+          <Route path="/docs" element={<Docs />}>
+            <Route path=":page" element={<Docs />} />
+          </Route>
           <Route path="/" element={<Main />}></Route>
         </Routes>
       </Router>

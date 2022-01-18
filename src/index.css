@@ -4,9 +4,14 @@
 
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
+  /* font-family: 'Nunito', sans-serif; */
+  font-family: 'Gotham', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  background-color: #1a1a1a;
 }
 
 code {

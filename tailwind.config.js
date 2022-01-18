@@ -23,6 +23,8 @@ module.exports = {
         'card-0': "url('img/kingdom-11.png')",
         'card-1': "url('img/kingdom-1578.png')",
         'card-2': "url('img/kingdom-paying-with-card-online.png')",
+        'docs-shark': "url('img/VDFM1.png')",
+        'docs-burp': "url('img/Burp-Suite-Professional.jpg')",
       },
       animation: {
         'gradient-y': 'gradient-y 5s ease infinite',

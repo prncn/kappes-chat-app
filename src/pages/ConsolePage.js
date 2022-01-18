@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import Typical from "react-typical";
 import JSONPretty from "react-json-prettify";
+import { dracula } from 'react-json-prettify/dist/themes';
 
 async function fetchData(url) {
   const data = await fetch(url);
@@ -68,7 +69,11 @@ export function ConsolePage() {
               result.out = `Usage "inject <message>" or "inject clear" to send original messages`;
             } else {
               await fetch(`http://localhost:3001/inject?msg=${injectMsg}`);
-              result.out = `Injected a message "${injectMsg}"`;
+              if(injectMsg === 'clear') {
+                result.out = 'Cleared message tampering';
+              } else {
+                result.out = `Injected a message "${injectMsg}"`;
+              }
             }
             break;
 
@@ -81,10 +86,9 @@ export function ConsolePage() {
     }
 
     const JSONtheme = {
-      background: "rgb(39, 40, 34)",
+      background: "#2e2e2e",
       brace: "rgb(129, 211, 204)",
       keyQuotes: "rgb(129, 211, 204)",
-      valueQuotes: "rgb(129, 211, 204)",
       colon: "rgb(129, 211, 204)",
       comma: "rgb(129, 211, 204)",
       key: "rgb(201, 70, 56)",
@@ -115,8 +119,10 @@ export function ConsolePage() {
           </form>
         </div>
         {command?.in && (
-          <div className="overflow-y-visible">
-            <JSONPretty json={command?.out} theme={JSONtheme} padding={1} />
+          <div className="overflow-y-visible ">
+            <div className="overflow-x-hidden">
+            <JSONPretty json={command?.out} theme={dracula} padding={1} />
+            </div>
           </div>
         )}
       </>

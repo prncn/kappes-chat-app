@@ -1,14 +1,13 @@
+const port = 3001;
 const express = require('express')
 const cors = require('cors')
 const { Server } = require('socket.io');
 const { getDeviceList, getRecentPackets, injectMessage, getRecentHTTPHeaders } = require('./pcaps/mitmProxy');
 const app = express()
-const https = require('http');
+// const https = require('http');
 // const fs = require('fs');
-const port = 3001;
 // const cert = fs.readFileSync('./pcaps/.http-mitm-proxy/certs/ca.pem');
 // const key = fs.readFileSync('./pcaps/.http-mitm-proxy/keys/ca.private.key');
-
 // const server = https.createServer({}, app);
 
 const server = app.listen(port, () => {
@@ -31,6 +30,10 @@ io.on('connection', (socket) => {
 });
 
 app.use(cors());
+
+app.get('/', (req, res) => {
+  return res.send('Backend running')
+})
 
 app.get('/devices', (req, res) => {
   return res.send(getDeviceList());

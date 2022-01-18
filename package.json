@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@craco/craco": "^6.4.0",
+    "@fontsource/nunito": "^4.5.1",
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -11,6 +12,7 @@
     "cap": "^0.2.1",
     "concurrently": "^6.4.0",
     "electron": "^16.0.4",
+    "gotham-fonts": "^1.0.3",
     "hex2ascii": "^0.0.3",
     "hoxy": "^3.3.1",
     "hoxyws": "^3.6.1",
@@ -33,7 +35,7 @@
   "main": "main",
   "scripts": {
     "start": "craco start",
-    "server": "node server.js",
+    "server": "node pcaps/mitmProxy.js",
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",

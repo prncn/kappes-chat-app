@@ -3,8 +3,9 @@ import io from "socket.io-client";
 import React, { useEffect, useState } from "react";
 import TextBox from "../components/TextBox";
 import Contact from "../components/Contact";
+import { Helmet } from "react-helmet";
 
-const socket = io.connect("http://localhost:3001", {
+const socket = io.connect("https://platin.demo.com:3001", {
   rejectUnauthorized: false,
 });
 
@@ -90,6 +91,9 @@ export default function ChatApp() {
 
   return (
     <>
+      <Helmet>
+        <title>Chat App | Platin Demo</title>
+      </Helmet>
       <div className="min-h-screen bg-gray-300 w-full">
         <p className="text-white p-1">KAPPES ITSEC DEMO PLATIN</p>
         <div className="flex justify-center items-center h-full">
@@ -130,35 +134,35 @@ function ChatView({ messages, childToParent }) {
   
   const personsPlaceholder = [
     new Person('Marcus', 'Darcus', 'Thank you'),
-    new Person('Sabrina', 'Wohl', 'Let me know when the time comes'),
+    new Person('Erykah', 'Badu', 'Let me know when the time comes'),
     new Person('Hatice', 'Akyün', 'The most unimportant part is this'),
     new Person('Clint', 'Murakami', 'Actually, this is about sockets'),
   ]
   
-  const [persons, setPersons] = useState([]);
+  // const [persons, setPersons] = useState([]);
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const data = await fetch('https://randommer.io/api/Name?nameType=fullname&quantity=4', {
-          headers: {
-            "X-API-KEY": "ab92819f6806427985c712e78aaef483",
-          }
-        });
-        const json = await data.json();
-        console.log(json);
-        let collect = [];
-        for (const item of json) {
-          const fullname = item.split(" ");
-          collect.push(new Person(fullname.at(0), fullname.at(1), personsPlaceholder.at(Math.random() * 4).recent));
-        }
-        setPersons(collect);
-      } catch (error) {
-        console.log(error);
-        setPersons(personsPlaceholder);
-      }
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       const data = await fetch('https://randommer.io/api/Name?nameType=fullname&quantity=4', {
+  //         headers: {
+  //           "X-API-KEY": "ab92819f6806427985c712e78aaef483",
+  //         }
+  //       });
+  //       const json = await data.json();
+  //       console.log(json);
+  //       let collect = [];
+  //       for (const item of json) {
+  //         const fullname = item.split(" ");
+  //         collect.push(new Person(fullname.at(0), fullname.at(1), personsPlaceholder.at(Math.random() * 4).recent));
+  //       }
+  //       setPersons(collect);
+  //     } catch (error) {
+  //       console.log(error);
+  //       setPersons(personsPlaceholder);
+  //     }
+  //   })();
+  // }, []);
 
   return (
     <>
@@ -167,7 +171,7 @@ function ChatView({ messages, childToParent }) {
           <div className="w-full p-4 py-5">
             <TextBox color="bg-white" search placeholder="Search" />
           </div>
-          {persons.map((person, i) => (
+          {personsPlaceholder.map((person, i) => (
             <Contact key={i} person={{first: person.first, last: person.last}} recent={person.recent} />
           ))}
         </div>

@@ -21,3 +21,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+/.http-mitm-proxy
+/pcaps/.http-mitm-proxy
+!/pcaps/.http-mitm-proxy/certs/ca.pem
+!/pcaps/.http-mitm-proxy/keys/ca.private.key

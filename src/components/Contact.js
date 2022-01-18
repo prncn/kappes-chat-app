@@ -1,6 +1,6 @@
-export default function Contact({ person, recent }) {
+export default function Contact({ person, recent, index }) {
   const colors = ['indigo', 'blue', 'green', 'indigo'];
-  const color = () => colors.at(Math.random() * colors.length);
+  const color = () => colors.at(1);
 
   return (
     <button className="text-left hover:bg-gray-200">
