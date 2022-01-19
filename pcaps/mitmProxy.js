@@ -16,18 +16,23 @@ const https = require("https");
 const fs = require("fs");
 const path = require("path");
 
-const cert = fs.readFileSync(path.join(__dirname, '/.http-mitm-proxy/certs/ca.pem'));
-const key = fs.readFileSync(path.join(__dirname, './.http-mitm-proxy/keys/ca.private.key'));
+const cert = fs.readFileSync(path.join(__dirname, '/.http-mitm-proxy/certs/platin.demo.com.pem'));
+const key = fs.readFileSync(path.join(__dirname, './.http-mitm-proxy/keys/platin.demo.com.key'));
 
-const HTTPSserver = https.createServer({cert, key}, app).listen(backendPort, () => {
-  console.log(`TLS Backend running on ${backendPort}`);
-});
 
-// const HTTPserver = app.listen(backendPort, () => {
-//   console.log(`Non-TLS Backend running on ${backendPort}`);
-// });
+let server;
+if(process.env['SERVER_HTTPS'] === false) {
+  process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0
+  server = https.createServer({cert, key, rejectUnauthorized: false}, app).listen(backendPort, () => {
+    console.log(`TLS Backend running on ${backendPort}`);
+  });
+} else {
+  server = app.listen(backendPort, () => {
+    console.log(`Non-TLS Backend running on ${backendPort}`);
+  });
+}
 
-const io = new Server(HTTPSserver, {
+const io = new Server(server, {
   cors: {
     origin: "*",
     methods: ["GET", "POST"],
@@ -53,17 +58,22 @@ app.get("/devices", (req, res) => {
 });
 
 app.get("/headers", async (req, res) => {
-  return res.send(await getRecentHTTPHeaders());
+  return res.send(getRecentHTTPHeaders());
 });
 
 app.get("/packet", async (req, res) => {
-  return res.send(await getRecentPackets());
+  return res.send(getRecentPackets());
 });
 
 app.get("/inject", async (req, res) => {
   if ("msg" in req.query) {
     return res.send(injectMessage(req.query.msg));
   }
+});
+
+app.get("/expose", async (req, res) => {
+  console.log(req.query.get);
+  return res.send(exposeCert(req.query.get));
 });
 
 proxy.onError(function (ctx, err, errorKind) {
@@ -139,9 +149,21 @@ function injectMessage(msg) {
 
 function getRecentHTTPHeaders(params) {}
 
+function exposeCert(get) {
+  let response;
+  if(get === "cert") {
+    response = cert.toString();
+  }
+  if(get === "key") {
+    response = key.toString();
+  }
+  return { response };
+}
+
 module.exports = {
   getDeviceList,
   getRecentPackets,
   injectMessage,
   getRecentHTTPHeaders,
+  exposeCert,
 };

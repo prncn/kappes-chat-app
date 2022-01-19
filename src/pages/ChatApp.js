@@ -5,7 +5,7 @@ import TextBox from "../components/TextBox";
 import Contact from "../components/Contact";
 import { Helmet } from "react-helmet";
 
-const socket = io.connect("https://platin.demo.com:3001", {
+const socket = io.connect("http://platin.demo.com:3001", {
   rejectUnauthorized: false,
 });
 

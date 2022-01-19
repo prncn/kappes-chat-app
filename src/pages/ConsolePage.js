@@ -28,6 +28,8 @@ export function ConsolePage() {
         "Refer to the docs",
       ];
 
+      const ENDPOINT = "http://localhost:3001/";
+
       if (!/^ *$/.test(input)) {
         const inputArray = input.split(" ");
         setHasEntered(true);
@@ -74,6 +76,19 @@ export function ConsolePage() {
               } else {
                 result.out = `Injected a message "${injectMsg}"`;
               }
+            }
+            break;
+
+          case "expose":
+            const exposeParam = inputArray.at(1);
+            if(exposeParam === "cert") {
+              const exposedCert = await fetchData(ENDPOINT + 'expose?get=cert');
+              result.out = exposedCert;
+            } else if(exposeParam === "key") {
+              const exposedCert = await fetchData(ENDPOINT + 'expose?get=key');
+              result.out = exposedCert;
+            } else {
+              result.out = "Missing param to expose. Try expose cert";
             }
             break;
 

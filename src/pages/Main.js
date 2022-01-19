@@ -21,13 +21,13 @@ export default function Main() {
           Platin
         </p>
         <div className="flex flex-col justify-center w-2/3 mt-20 text-ebony-100 space-y-4">
-          <h1 className="text-9xl font-bold text-yellow-50 tracking-tight">
-            MITM <br />{" "}
-            <div className="bg-gradient-to-r from-yellow-200 to-pink-700 text-transparent bg-clip-text">
-              Demo
+          <h1 className="text-7xl font-bold text-yellow-50 tracking-tight">
+            MITM <br />
+            <div className="bg-gradient-to-r from-yellow-200 to-pink-700 text-transparent animate-gradient-y bg-clip-text">
+              DEMO
             </div>
           </h1>
-          <p className="text-2xl font-medium py-5">
+          <p className="text-2xl font-medium text-white py-5">
             Erstellen und Validieren von Sicherheitsdemos. <br />
             Von Studenten für Studenten.
           </p>
@@ -49,7 +49,7 @@ export default function Main() {
             <Link to="/docs" key={i}>
               <div
                 className={`${
-                  i === 2 && "bg-card-1 bg-cover"
+                  i === 2 && "bg-card-1 bg-cover bg-top"
                 } text-white cursor-pointer hover:bg-ebony-900 transition h-40 border border-white rounded flex justify-center items-center`}
               >
                 <p className={`${i === 2 && "bg-ebony-800"} p-3 rounded`}>
