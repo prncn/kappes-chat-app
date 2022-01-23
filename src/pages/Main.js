@@ -1,17 +1,17 @@
-import "../index.css";
-import ChatApp from "./ChatApp";
-import React from "react";
-import { ConsolePage } from "./ConsolePage";
-import { Link } from "react-router-dom";
+import '../index.css';
+import ChatApp from './ChatApp';
+import React from 'react';
+import { ConsolePage } from './ConsolePage';
+import { Link } from 'react-router-dom';
 
 export default function Main() {
   const topics = [
-    "Tools",
-    "Was ist SSL/TLS?",
-    "Chat App",
-    "Web Sockets",
-    "Zertifikate",
-    "Packets",
+    { name: 'Tools', link: '/docs/wireshark' },
+    { name: 'Was ist SSL/TLS?', link: '/docs/ssl' },
+    { name: 'Chat App', link: '/chatapp' },
+    { name: 'Web Sockets', link: '/docs' },
+    { name: 'Zertifikate', link: '/docs' },
+    { name: 'Packets', link: '/docs/packets' },
   ];
 
   return (
@@ -46,14 +46,14 @@ export default function Main() {
         <div className="absolute top-0 right-0 bg-gradient-to-r from-yellow-200 to-pink-700 h-96 w-96 rounded-b-xl animate-gradient-y" />
         <div className="my-20 grid grid-cols-4 grid-rows-2 items-start gap-4">
           {topics.map((topic, i) => (
-            <Link to="/docs" key={i}>
+            <Link to={topic.link} key={i}>
               <div
                 className={`${
-                  i === 2 && "bg-card-1 bg-cover bg-top"
+                  i === 2 && 'bg-card-1 bg-cover bg-top'
                 } text-white cursor-pointer hover:bg-ebony-900 transition h-40 border border-white rounded flex justify-center items-center`}
               >
-                <p className={`${i === 2 && "bg-ebony-800"} p-3 rounded`}>
-                  {topic}
+                <p className={`${i === 2 && 'bg-ebony-800'} p-3 rounded`}>
+                  {topic.name}
                 </p>
               </div>
             </Link>

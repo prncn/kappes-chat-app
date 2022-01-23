@@ -25,4 +25,9 @@ yarn-error.log*
 /.http-mitm-proxy
 /pcaps/.http-mitm-proxy
 !/pcaps/.http-mitm-proxy/certs/ca.pem
+!/pcaps/.http-mitm-proxy/certs/platin.demo.com.pem
 !/pcaps/.http-mitm-proxy/keys/ca.private.key
+!/pcaps/.http-mitm-proxy/keys/platin.demo.com.key
+
+!/.http-mitm-proxy/keys/platin.demo.com.key
+!/.http-mitm-proxy/certs/platin.demo.com.pem

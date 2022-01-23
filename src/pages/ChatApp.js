@@ -1,18 +1,22 @@
-import "../index.css";
-import io from "socket.io-client";
-import React, { useEffect, useState } from "react";
-import TextBox from "../components/TextBox";
-import Contact from "../components/Contact";
-import { Helmet } from "react-helmet";
+import '../index.css';
+import { io } from 'socket.io-client';
+import React, { useEffect, useState } from 'react';
+import TextBox from '../components/TextBox';
+import Contact from '../components/Contact';
+import { Helmet } from 'react-helmet';
 
-const socket = io.connect("http://platin.demo.com:3001", {
+const SERVER_URL = `http${
+  JSON.parse(process.env.REACT_APP_SERVER_HTTPS) ? 's' : ''
+}://platin.demo.com:3001`;
+
+const socket = io.connect(SERVER_URL, {
   rejectUnauthorized: false,
 });
 
 function getTime(current) {
-  return current.toLocaleTimeString("en-US", {
-    hour: "2-digit",
-    minute: "2-digit",
+  return current.toLocaleTimeString('en-US', {
+    hour: '2-digit',
+    minute: '2-digit',
     hour12: false,
   });
 }
@@ -22,8 +26,8 @@ function Bubble({ msg }) {
     <div
       className={`py-2 mb-1 pl-2 flex items-center max-w-xl ${
         msg.mine
-          ? "ml-auto bg-gray-100 text-gray-600"
-          : "mr-auto bg-gray-500 text-white"
+          ? 'ml-auto bg-gray-100 text-gray-600'
+          : 'mr-auto bg-gray-500 text-white'
       } rounded font-light 2xl:text-xs text-sm`}
     >
       <div className="mr-10">{msg.content}</div>
@@ -47,10 +51,18 @@ function NavButtonGroup({ children, page, onChange }) {
   );
 }
 
+class MessageObj {
+  constructor(content, mine) {
+    this.content = content;
+    this.mine = mine;
+    this.date = getTime(new Date());
+  }
+}
+
 function NavButton({ icon, active = false, onClick }) {
   return (
     <button
-      className={active ? "opacity-100" : "opacity-50 + hover:opacity-80"}
+      className={active ? 'opacity-100' : 'opacity-50 + hover:opacity-80'}
       onClick={onClick}
     >
       <img src={`./${icon}.svg`} alt={icon} className="w-6 my-1" />
@@ -60,7 +72,7 @@ function NavButton({ icon, active = false, onClick }) {
 
 export default function ChatApp() {
   const [messages, setMessages] = useState([]);
-  const [page, setPage] = useState("chat");
+  const [page, setPage] = useState('chat');
 
   function handlePage(newPage) {
     if (newPage !== page) {
@@ -70,21 +82,13 @@ export default function ChatApp() {
 
   function childToParent(e, input) {
     e.preventDefault();
-    if (input === "") return;
-    socket.emit("send", input);
+    if (input === '') return;
+    socket.emit('send', input);
     setMessages([...messages, new MessageObj(input, true)]);
   }
 
-  class MessageObj {
-    constructor(content, mine) {
-      this.content = content;
-      this.mine = mine;
-      this.date = getTime(new Date());
-    }
-  }
-
   useEffect(() => {
-    socket.on("receive", (content) => {
+    socket.on('receive', (content) => {
       setMessages([...messages, new MessageObj(content, false)]);
     });
   }, [messages]);
@@ -99,7 +103,7 @@ export default function ChatApp() {
         <div className="flex justify-center items-center h-full">
           <div
             className="flex rounded-2xl shadow-lg bg-gray-500 overflow-hidden max-w-screen-lg"
-            style={{ width: "100%", height: "700px" }}
+            style={{ width: '100%', height: '700px' }}
           >
             <div className="flex-none bg-gray-700 __section __section-pad">
               <img src="./iconlogo.svg" alt="logoicon" className="w-9" />
@@ -112,10 +116,10 @@ export default function ChatApp() {
                 </NavButtonGroup>
               </div>
             </div>
-            {page === "chat" && (
+            {page === 'chat' && (
               <ChatView messages={messages} childToParent={childToParent} />
             )}
-            {page === "home" && <HomeView />}
+            {page === 'home' && <HomeView />}
           </div>
         </div>
       </div>
@@ -131,14 +135,14 @@ function ChatView({ messages, childToParent }) {
       this.recent = recent;
     }
   }
-  
+
   const personsPlaceholder = [
     new Person('Marcus', 'Darcus', 'Thank you'),
     new Person('Erykah', 'Badu', 'Let me know when the time comes'),
     new Person('Hatice', 'Akyün', 'The most unimportant part is this'),
     new Person('Clint', 'Murakami', 'Actually, this is about sockets'),
-  ]
-  
+  ];
+
   // const [persons, setPersons] = useState([]);
 
   // useEffect(() => {
@@ -172,16 +176,20 @@ function ChatView({ messages, childToParent }) {
             <TextBox color="bg-white" search placeholder="Search" />
           </div>
           {personsPlaceholder.map((person, i) => (
-            <Contact key={i} person={{first: person.first, last: person.last}} recent={person.recent} />
+            <Contact
+              key={i}
+              person={{ first: person.first, last: person.last }}
+              recent={person.recent}
+            />
           ))}
         </div>
       </div>
       <div className="overflow-y-auto h-full bg-white w-8/12 justify-end __section __section-pad">
         <div className="text-gray-300 text-xs font-medium my-2">
-          {new Date().toLocaleDateString("de-DE", {
-            weekday: "long",
-            month: "short",
-            day: "numeric",
+          {new Date().toLocaleDateString('de-DE', {
+            weekday: 'long',
+            month: 'short',
+            day: 'numeric',
           })}
         </div>
         {messages.map((msg, i) => (

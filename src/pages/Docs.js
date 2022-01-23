@@ -1,7 +1,7 @@
-import React, { Children, useState } from "react";
-import { Helmet } from "react-helmet";
-import ReactPlayer from "react-player";
-import { Link, NavLink, useParams } from "react-router-dom";
+import React, { useState } from 'react';
+import { Helmet } from 'react-helmet';
+import ReactPlayer from 'react-player';
+import { Link, NavLink, useParams } from 'react-router-dom';
 
 export function Docs() {
   const params = useParams();
@@ -14,14 +14,14 @@ export function Docs() {
     }
   }
   const chapters = [
-    new chapter("Tools", ["Wireshark", "Burp", "DNS"]),
-    new chapter("Security", [
-      "Packets",
-      "Proxy Server",
-      "ARP Poisoning",
-      "Spoofing",
+    new chapter('Tools', ['Wireshark', 'Burp', 'DNS']),
+    new chapter('Security', [
+      'Packets',
+      'Proxy Server',
+      'ARP Poisoning',
+      'Spoofing',
     ]),
-    new chapter("Verschlüsselung", ["SSL", "Zertifikate"]),
+    new chapter('Verschlüsselung', ['SSL', 'Zertifikate']),
   ];
 
   return (
@@ -46,7 +46,7 @@ export function Docs() {
                   to={page.toLowerCase()}
                   className={({ isActive }) =>
                     `${
-                      isActive ? "text-indigo-500" : "text-ebony-400"
+                      isActive ? 'text-indigo-500' : 'text-ebony-400'
                     } hover:text-ebony-100`
                   }
                 >
@@ -120,7 +120,7 @@ function Wireshark() {
         </p>
         <div
           className="overflow-hidden rounded-lg"
-          style={{ width: "43rem", height: "24rem" }}
+          style={{ width: '43rem', height: '24rem' }}
         >
           <ReactPlayer
             muted
@@ -164,7 +164,7 @@ function Burp() {
         </div>
         <div
           className="w-full overflow-hidden rounded-lg"
-          style={{ height: "43rem" }}
+          style={{ height: '43rem' }}
         >
           <ReactPlayer
             muted
@@ -208,8 +208,8 @@ function Ettercap() {
 }
 
 function Packets() {
-  const [segCode, setSegCode] = useState("");
-  const [segName, setSegName] = useState("");
+  const [segCode, setSegCode] = useState('');
+  const [segName, setSegName] = useState('');
   const [segLen, setSegLen] = useState(0);
 
   function DisplayBytes({ bytes, name }) {
@@ -219,8 +219,8 @@ function Packets() {
 
     const decoded = Buffer.from(bytes)
       .toString()
-      .split("")
-      .map((c) => (isASCII(c) ? c : "."));
+      .split('')
+      .map((c) => (isASCII(c) ? c : '.'));
 
     return (
       <div
@@ -236,7 +236,7 @@ function Packets() {
             key={i}
             className="p-3 hover:bg-ebony-500 rounded font-semibold cursor-default text-lg text-indigo-400"
           >
-            {byte.toString(16).padStart(2, "0")}
+            {byte.toString(16).padStart(2, '0')}
           </div>
         ))}
       </div>
@@ -269,7 +269,7 @@ function Packets() {
           </h1>
         </div>
         <div className="flex flex-col space-y-4 text-lg font-semibold pb-20 font-mono">
-          {"< Buffer "}
+          {'< Buffer '}
           <DisplayBytes
             bytes={[
               0x18, 0x00, 0x00, 0x00, 0x60, 0x03, 0x5b, 0x10, 0x00, 0x37, 0x06,
@@ -316,7 +316,7 @@ function Packets() {
             name="Data"
           />
 
-          {" >"}
+          {' >'}
         </div>
       </div>
     </>
@@ -453,7 +453,7 @@ function SSL() {
         folgenden Befehlen hinzu: Bearbeiten Sie dann die Datei index.js wie
         folgt: Starten Sie den Server mit dem unten stehenden Befehl: Eine
         Erfolgsmeldung: Server is Listening on https://localhost:3000 wird auf
-        der Konsole angezeigt.{" "}
+        der Konsole angezeigt.{' '}
       </Paragraph>
       <Heading>Schritt 4: Test in einem Browser und API-Client</Heading>
 
@@ -467,7 +467,7 @@ function SSL() {
         uns als Zertifizierungsstelle kann nicht vertraut werden. Um dies zu
         beheben, testen wir zunächst unseren Link mit Postman wie unten
         beschrieben: Wie oben zu sehen ist, kann das SSL-Zertifikat nicht
-        verifiziert werden.{" "}
+        verifiziert werden.{' '}
       </Paragraph>
       <Heading>Schritt 5: CA-Zertifikat in den Browser importieren</Heading>
       <Paragraph>
@@ -484,7 +484,7 @@ function SSL() {
       </Paragraph>
       <Heading>Schritt 6: Konfigurieren und Testen des API-Clients</Heading>
       <Paragraph>
-        {" "}
+        {' '}
         Der Prozess der Konfiguration des API-Clients ist derselbe wie der des
         Browsers, mit dem Unterschied, dass man die Zertifikatsüberprüfung
         deaktivieren muss. Stellen Sie in den Postman-Einstellungen sicher, dass
@@ -498,7 +498,7 @@ function SSL() {
         hinzufügen. Stellen Sie in den Postman-Einstellungen sicher, dass
         CA-Zertifikate aktiviert sind, und wählen Sie die Datei CA.pem aus.
         Führen Sie dann die Anfrage wie unten gezeigt erneut aus; dieses Mal
-        erhalten wir eine sichere 200 OK-Meldung. postman success cert{" "}
+        erhalten wir eine sichere 200 OK-Meldung. postman success cert{' '}
       </Paragraph>
       <Heading>Schlussfolgerung</Heading>
       <Paragraph>

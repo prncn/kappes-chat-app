@@ -1,6 +1,6 @@
-import React, { useState, useRef } from "react";
-import Typical from "react-typical";
-import JSONPretty from "react-json-prettify";
+import React, { useState, useRef } from 'react';
+import Typical from 'react-typical';
+import JSONPretty from 'react-json-prettify';
 import { dracula } from 'react-json-prettify/dist/themes';
 
 async function fetchData(url) {
@@ -21,17 +21,17 @@ export function ConsolePage() {
       const input = inputRef.current.value;
 
       const failMsg = [
-        "Sorry",
-        "Try again",
-        "Check available commands",
-        "Nope",
-        "Refer to the docs",
+        'Sorry',
+        'Try again',
+        'Check available commands',
+        'Nope',
+        'Refer to the docs',
       ];
 
-      const ENDPOINT = "http://localhost:3001/";
+      const ENDPOINT = 'http://localhost:3001/';
 
       if (!/^ *$/.test(input)) {
-        const inputArray = input.split(" ");
+        const inputArray = input.split(' ');
         setHasEntered(true);
         let result = {
           in: input,
@@ -41,37 +41,37 @@ export function ConsolePage() {
         };
 
         switch (inputArray.at(0)) {
-          case "clear":
+          case 'clear':
             setLines([]);
-            inputRef.current.value = "";
+            inputRef.current.value = '';
             return;
 
-          case "read":
+          case 'read':
             result.out = 'packet: length 88, ["receive","someos"]';
             break;
 
-          case "devices":
-            const devices = await fetchData("http://localhost:3001/devices");
-            result.out = JSON.stringify(devices, null, "\t");
+          case 'devices':
+            const devices = await fetchData('http://localhost:3001/devices');
+            result.out = JSON.stringify(devices, null, '\t');
             break;
 
-          case "packet":
-            const packet = await fetchData("http://localhost:3001/packet");
+          case 'packet':
+            const packet = await fetchData('http://localhost:3001/packet');
             result.out = packet;
             break;
 
-          case "headers":
-            const headers = await fetchData("http://localhost:3001/headers");
+          case 'headers':
+            const headers = await fetchData('http://localhost:3001/headers');
             result.out = headers;
             break;
 
-          case "inject":
+          case 'inject':
             const injectMsg = inputArray.at(1);
-            if(injectMsg === undefined) {
+            if (injectMsg === undefined) {
               result.out = `Usage "inject <message>" or "inject clear" to send original messages`;
             } else {
               await fetch(`http://localhost:3001/inject?msg=${injectMsg}`);
-              if(injectMsg === 'clear') {
+              if (injectMsg === 'clear') {
                 result.out = 'Cleared message tampering';
               } else {
                 result.out = `Injected a message "${injectMsg}"`;
@@ -79,16 +79,16 @@ export function ConsolePage() {
             }
             break;
 
-          case "expose":
+          case 'expose':
             const exposeParam = inputArray.at(1);
-            if(exposeParam === "cert") {
+            if (exposeParam === 'cert') {
               const exposedCert = await fetchData(ENDPOINT + 'expose?get=cert');
               result.out = exposedCert;
-            } else if(exposeParam === "key") {
+            } else if (exposeParam === 'key') {
               const exposedCert = await fetchData(ENDPOINT + 'expose?get=key');
               result.out = exposedCert;
             } else {
-              result.out = "Missing param to expose. Try expose cert";
+              result.out = 'Missing param to expose. Try expose cert';
             }
             break;
 
@@ -96,25 +96,9 @@ export function ConsolePage() {
             break;
         }
         setLines([...lines, result]);
-        inputRef.current.value = "";
+        inputRef.current.value = '';
       }
     }
-
-    const JSONtheme = {
-      background: "#2e2e2e",
-      brace: "rgb(129, 211, 204)",
-      keyQuotes: "rgb(129, 211, 204)",
-      colon: "rgb(129, 211, 204)",
-      comma: "rgb(129, 211, 204)",
-      key: "rgb(201, 70, 56)",
-      value: {
-        string: "rgb(242, 152, 59)",
-        null: "rgb(201, 70, 56)",
-        number: "green",
-        boolean: "rgb(129, 211, 204)",
-      },
-      bracket: "rgb(129, 211, 204)",
-    };
 
     return (
       <>
@@ -136,7 +120,7 @@ export function ConsolePage() {
         {command?.in && (
           <div className="overflow-y-visible ">
             <div className="overflow-x-hidden">
-            <JSONPretty json={command?.out} theme={dracula} padding={1} />
+              <JSONPretty json={command?.out} theme={dracula} padding={1} />
             </div>
           </div>
         )}
@@ -152,9 +136,9 @@ export function ConsolePage() {
       <div className="h-10">
         {!hasEntered && (
           <div className="inline-flex font-mono">
-            user@root {"  "} ~ $ {"  "}
+            user@root {'  '} ~ $ {'  '}
             <Typical
-              steps={["read message -v", 2000, "expose ssl cert", 5000]}
+              steps={['read message -v', 2000, 'expose ssl cert', 5000]}
               loop={Infinity}
               className="mx-4"
             />
@@ -169,7 +153,7 @@ export function ConsolePage() {
         </div>
         <div
           className="w-full absolute bottom-0 border-t border-white p-4 inline-flex flex-col "
-          style={{ height: "90%" }}
+          style={{ height: '90%' }}
         >
           {lines.map((line, i) => (
             <Line command={line} key={i} />
