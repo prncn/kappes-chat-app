@@ -4,10 +4,9 @@
 
 body {
   margin: 0;
-  /* font-family: 'Nunito', sans-serif; */
-  font-family: 'Gotham', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: 'Inter';
 }
 
 html {
@@ -24,5 +23,5 @@ code {
 }
 
 .__section-pad {
-  @apply py-3 px-3
+  @apply py-3 px-3;
 }

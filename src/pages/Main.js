@@ -21,7 +21,7 @@ export default function Main() {
           Platin
         </p>
         <div className="flex flex-col justify-center w-2/3 mt-20 text-ebony-100 space-y-4">
-          <h1 className="text-7xl font-bold text-yellow-50 tracking-tight">
+          <h1 className="text-9xl font-bold text-yellow-50 tracking-tight">
             MITM <br />
             <div className="bg-gradient-to-r from-yellow-200 to-pink-700 text-transparent animate-gradient-y bg-clip-text">
               DEMO
@@ -66,15 +66,20 @@ export default function Main() {
             Demo mit Interaktion.
           </h1>
           <p className="w-96">
-            Die Digitalisierung durchdringt sämtliche Lebens-, Arbeits- und
-            Geschäftsbereiche. Die Bedeutung von Informations- und
-            Cybersicherheit nimmt stetig zu. Die Digitalisierung in Staat,
-            Wirtschaft und Gesellschaft hat Deutschland in nur wenigen Jahren
-            grundlegend verändert. Neue Möglichkeiten der Kommunikation, des
-            Wissenszugangs und der innovativen Gestaltung führen zu mehr
-            sozialer Interaktion, neuen Geschäftsmodellen und neuen Feldern für
-            Forschung und Entwicklung. Vernetzte elektronische Geräte prägen
-            verstärkt den Lebens- und Arbeitsalltag der Menschen.
+            Ziel dieser Website ist es, dass Thema „Website Verschlüsselung mit
+            https“ durch eine Mischung aus Hintergrundinformationen, Tutorials
+            mit Videoanleitungen und interaktives Testen näher an den Besucher
+            dieser Seite zu bringen. Wir schauen uns dafür an, wie das Protokoll
+            http ausgebaut ist und zeigen mithilfe der Tools „Wireshark“ und
+            „Burp Suite Community“ Angriffe auf die unsichere Version der
+            Website. Eine virtuelle Maschine ist in Kapitel ___ mitgeliefert und
+            ermöglicht das selbständige Testen der Angriffe. Die Durchführung
+            der Angriffe wird in kommenden Kapiteln mit Videos und
+            Hintergrundinformationen erläutert. Durch unsere interaktive Konsole
+            ist es jedem möglich, neben den oben genannten Tools die Angriffe
+            auch direkt auf der Seite durchführen zu können. Gegen Ende erklären
+            wir neben der HTTPS-Verschlüsselung weitere Schutzmechanismen, um
+            die eigene Seite sicherer zu gestalten.
           </p>
         </div>
       </div>
@@ -84,15 +89,18 @@ export default function Main() {
             Sicherheit aus Nutzerperspektive.
           </h1>
           <p className="w-96">
-            Die Digitalisierung durchdringt sämtliche Lebens-, Arbeits- und
-            Geschäftsbereiche. Die Bedeutung von Informations- und
-            Cybersicherheit nimmt stetig zu. Die Digitalisierung in Staat,
-            Wirtschaft und Gesellschaft hat Deutschland in nur wenigen Jahren
-            grundlegend verändert. Neue Möglichkeiten der Kommunikation, des
-            Wissenszugangs und der innovativen Gestaltung führen zu mehr
-            sozialer Interaktion, neuen Geschäftsmodellen und neuen Feldern für
-            Forschung und Entwicklung. Vernetzte elektronische Geräte prägen
-            verstärkt den Lebens- und Arbeitsalltag der Menschen.
+            Bei der Demonstration der Angriffe werden wir auf die Schutzziele
+            der IT-Sicherheit eingehen und versuchen zu erläutern, wieso wir bei
+            den Angriffen gegen diese verstoßen und welche Auswirkungen es haben
+            kann. Das Erstellen einer Seite, die einen Chat zwischen zwei
+            Nutzern zur Verfügung stellt, benötigt so viele Schutzmöglichkeiten,
+            wie nur möglich. Zwei Nutzer tauschen Informationen untereinander
+            aus, die nur für sie selbst einsehbar sein sollten. Wird es durch
+            unzureichenden Schutz einem Angreifer ermöglicht, diese Nachrichten
+            abzufangen oder sogar zu modifizieren, hat das große negative Folgen
+            auf die Schutzziele der IT-Sicherheit und auf die
+            Kundenzufriedenheit. All das soll in den kommenden Kapiteln
+            angeschnitten werden.
           </p>
         </div>
       </div>

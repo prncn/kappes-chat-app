@@ -28,7 +28,9 @@ export function ConsolePage() {
         'Refer to the docs',
       ];
 
-      const ENDPOINT = 'http://localhost:3001/';
+      const ENDPOINT = `http${
+        process.env['HTTPS'] ? 's' : ''
+      }://localhost:3001`;
 
       if (!/^ *$/.test(input)) {
         const inputArray = input.split(' ');
@@ -36,7 +38,7 @@ export function ConsolePage() {
         let result = {
           in: input,
           out: `${inputArray.at(0)} not found. ${failMsg.at(
-            Math.random() * failMsg.length
+            Math.floor(Math.random() * failMsg.length)
           )}.`,
         };
 
@@ -51,17 +53,17 @@ export function ConsolePage() {
             break;
 
           case 'devices':
-            const devices = await fetchData('http://localhost:3001/devices');
+            const devices = await fetchData(ENDPOINT + '/devices');
             result.out = JSON.stringify(devices, null, '\t');
             break;
 
           case 'packet':
-            const packet = await fetchData('http://localhost:3001/packet');
+            const packet = await fetchData(ENDPOINT + '/packet');
             result.out = packet;
             break;
 
           case 'headers':
-            const headers = await fetchData('http://localhost:3001/headers');
+            const headers = await fetchData(ENDPOINT + '/headers');
             result.out = headers;
             break;
 
@@ -70,7 +72,7 @@ export function ConsolePage() {
             if (injectMsg === undefined) {
               result.out = `Usage "inject <message>" or "inject clear" to send original messages`;
             } else {
-              await fetch(`http://localhost:3001/inject?msg=${injectMsg}`);
+              await fetch(`ENDPOINT/inject?msg=${injectMsg}`);
               if (injectMsg === 'clear') {
                 result.out = 'Cleared message tampering';
               } else {
@@ -82,10 +84,12 @@ export function ConsolePage() {
           case 'expose':
             const exposeParam = inputArray.at(1);
             if (exposeParam === 'cert') {
-              const exposedCert = await fetchData(ENDPOINT + 'expose?get=cert');
+              const exposedCert = await fetchData(
+                ENDPOINT + '/expose?get=cert'
+              );
               result.out = exposedCert;
             } else if (exposeParam === 'key') {
-              const exposedCert = await fetchData(ENDPOINT + 'expose?get=key');
+              const exposedCert = await fetchData(ENDPOINT + '/expose?get=key');
               result.out = exposedCert;
             } else {
               result.out = 'Missing param to expose. Try expose cert';
