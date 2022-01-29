@@ -12,6 +12,7 @@ export default function Main() {
     { name: 'Web Sockets', link: '/docs' },
     { name: 'Zertifikate', link: '/docs' },
     { name: 'Packets', link: '/docs/packets' },
+    { name: 'Phishing Demo', link: '/paypal' },
   ];
 
   return (

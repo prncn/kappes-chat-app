@@ -29,8 +29,8 @@ export function ConsolePage() {
       ];
 
       const ENDPOINT = `http${
-        process.env['HTTPS'] ? 's' : ''
-      }://localhost:3001`;
+        JSON.parse(process.env.REACT_APP_SERVER_HTTPS) ? 's' : ''
+      }://platin.demo.com:3001`;
 
       if (!/^ *$/.test(input)) {
         const inputArray = input.split(' ');
@@ -142,7 +142,7 @@ export function ConsolePage() {
           <div className="inline-flex font-mono">
             user@root {'  '} ~ $ {'  '}
             <Typical
-              steps={['read message -v', 2000, 'expose ssl cert', 5000]}
+              steps={['packets', 2000, 'expose cert', 5000]}
               loop={Infinity}
               className="mx-4"
             />

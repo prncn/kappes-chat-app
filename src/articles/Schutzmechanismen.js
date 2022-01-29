@@ -3,9 +3,9 @@ import { Heading, Paragraph } from '../pages/Docs';
 
 export function Schutzmechanismen({ lightMode, setLightMode }) {
   return (
-    <div className="w-4/5 relative">
+    <div className="w-4/5 relative space-y-6">
       <div
-        className={`absolute -top-20 -right-40 bg-no-repeat ${
+        className={`absolute -top-40 -right-40 bg-no-repeat ${
           !lightMode ? 'bg-lock-main' : 'bg-dev'
         }`}
         style={{ height: 912, width: 912 }}
@@ -28,7 +28,7 @@ export function Schutzmechanismen({ lightMode, setLightMode }) {
 
       {lightMode ? (
         <>
-          <Heading main>Benutzersicht</Heading>
+          <Heading main>Als Benutzer</Heading>
           <Paragraph short>
             Wie bereits in vorherigen Kapiteln angedeutet, schauen wir uns die
             Schutzmechanismen aus Benutzer- und Entwicklersicht an. Wir listen
@@ -87,7 +87,7 @@ export function Schutzmechanismen({ lightMode, setLightMode }) {
       ) : (
         <>
           <div className="my-20" />
-          <Heading main>Entwicklersicht</Heading>
+          <Heading main>Als Entwickler</Heading>
           <Paragraph>
             Ist man dabei, eine eigene Seite zu kreieren, welche mit
             Benutzerdaten arbeitet, so ist es von großer Bedeutung, diese sicher

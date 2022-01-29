@@ -52,10 +52,9 @@ prompt.get(properties, function (err, result) {
     process.env['HTTPS'] ? 's' : ''
   }://platin.demo.com:3000`;
 
-  exec('npm start');
+  exec('npm start', () => open(APP_URL));
   console.log(`\x1b[${process.env['HTTPS'] ? '32' : '33'}m`);
   console.log(`App running on ${APP_URL}`, '\x1b[0m');
-  open(APP_URL);
 
   let server;
   if (process.env['REACT_APP_SERVER_HTTPS']) {

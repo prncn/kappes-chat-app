@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, NavLink, useParams } from 'react-router-dom';
 import { Burp } from '../articles/Burp';
+import { Konsole } from '../articles/Konsole';
 import { Packets } from '../articles/Packets';
 import { Schutzmechanismen } from '../articles/Schutzmechanismen';
+import { Spoofing } from '../articles/Spoofing';
 import { SSL } from '../articles/SSL';
-import { Wireshark } from './Wireshark';
+import { Wireshark } from '../articles/Wireshark';
 
 export function Paragraph({ children, short }) {
   return (
@@ -18,9 +20,9 @@ export function Paragraph({ children, short }) {
 export function Heading({ children, main, sub }) {
   return (
     <h1
-      className={`${main ? 'text-6xl pt-10 font-bold' : 'text-3xl py-0'} ${
-        sub ? 'pb-0 font-thin' : 'py-14 font-bold'
-      } tracking-tight`}
+      className={`${main ? 'text-6xl pt-10 font-bold' : 'py-0'} ${
+        sub ? 'pb-0 font-thin text-lg' : 'pt-8 pb-0 font-bold text-xl'
+      } tracking-tight max-w-xl`}
     >
       {children}
     </h1>
@@ -48,7 +50,7 @@ export function Docs() {
   }
   const chapters = [
     new chapter('Tools', ['Wireshark', 'Burp', 'DNS']),
-    new chapter('Angriffe', ['Packets', 'MITM Konsole']),
+    new chapter('Angriffe', ['Packets', 'MITM Konsole', 'Spoofing']),
     new chapter('Schutz', ['Schutzmechanismen', 'SSL']),
   ];
 
@@ -108,7 +110,8 @@ export function Docs() {
                 setLightMode={setLightMode}
               />
             ),
-            'mitm konsole': <Packets />,
+            'mitm konsole': <Konsole />,
+            spoofing: <Spoofing />,
           }[currentPage]
         }
       </div>
