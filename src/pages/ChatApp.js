@@ -4,10 +4,10 @@ import React, { useEffect, useState } from 'react';
 import TextBox from '../components/TextBox';
 import Contact from '../components/Contact';
 import { Helmet } from 'react-helmet';
+const cryptr = require('simple-encryptor')('platinsupersecret');
 
-const SERVER_URL = `http${
-  JSON.parse(process.env.REACT_APP_SERVER_HTTPS) ? 's' : ''
-}://platin.demo.com:3001`;
+const TLS_ACTIVE = JSON.parse(process.env.REACT_APP_SERVER_HTTPS);
+const SERVER_URL = `http${TLS_ACTIVE ? 's' : ''}://platin.demo.com:3001`;
 
 const socket = io.connect(SERVER_URL, {
   rejectUnauthorized: false,
@@ -65,7 +65,7 @@ function NavButton({ icon, active = false, onClick }) {
       className={active ? 'opacity-100' : 'opacity-50 + hover:opacity-80'}
       onClick={onClick}
     >
-      <img src={`./${icon}.svg`} alt={icon} className="w-6 my-1" />
+      <img src={`/${icon}.svg`} alt={icon} className="w-6 my-1" />
     </button>
   );
 }
@@ -83,13 +83,15 @@ export default function ChatApp() {
   function childToParent(e, input) {
     e.preventDefault();
     if (input === '') return;
-    socket.emit('send', input);
+    const encryptedString = TLS_ACTIVE ? cryptr.encrypt(input) : input;
+    socket.emit('send', encryptedString);
     setMessages([...messages, new MessageObj(input, true)]);
   }
 
   useEffect(() => {
     socket.on('receive', (content) => {
-      setMessages([...messages, new MessageObj(content, false)]);
+      const decryptedContent = TLS_ACTIVE ? cryptr.decrypt(content) : content;
+      setMessages([...messages, new MessageObj(decryptedContent, false)]);
     });
   }, [messages]);
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactPlayer from 'react-player';
+import { Link } from 'react-router-dom';
 import { Heading, Paragraph } from '../pages/Docs';
 
 export function Wireshark() {
@@ -44,18 +45,20 @@ export function Wireshark() {
           loopback traffic capture“. Diese Netzwerkschnittstelle zeigt, wie der
           eigene Rechner mit sich selbst kommuniziert. Da unser Server lokal auf
           dem Rechner läuft, können wir hierrüber die Datenpakete abfangen. Nach
-          dem Doppelklick auf die Option startet Wireshark die Aufnahme. Wir
-          öffnen unsere Chat-App mit dem Link:________ in zwei Tabs, sodass wir
-          zwei Parteien simulieren können. Geben wir nun eine Nachricht (in
-          unserem Beispiel: Test123) in einem Tab ein, sehen wir Aktivität in
-          Wireshark. Wir schreiben im anderen Tab die Nachricht „Erhalten!“. Nun
-          beenden wir die Aufnahme mit dem roten viereckigen Knopf. Bei näherem
-          Betrachten von Paket 13 sehen wir im sogenannten Paket Bytes Bereich,
-          der im unteren Teil der Anwendung zu sehen ist, die Paketdaten in
-          Hexadezimal-Darstellung. Der blau markierte Teil lässt uns erkennen,
-          was der Inhalt der Nachricht gewesen ist. Außerdem wird es uns in
-          Klartext nochmal angezeigt, nämlich „Test123“. Im folgenden Video ist
-          alles kompakt dargestellt.
+          dem Doppelklick auf die Option startet Wireshark die Aufnahme.{' '}
+          <Link to="/chatapp" className="text-yellow-400 hover:text-yellow-300">
+            Wir öffnen unsere Chat-App
+          </Link>{' '}
+          in zwei Tabs, sodass wir zwei Parteien simulieren können. Geben wir
+          nun eine Nachricht (in unserem Beispiel: Test123) in einem Tab ein,
+          sehen wir Aktivität in Wireshark. Wir schreiben im anderen Tab die
+          Nachricht „Erhalten!“. Nun beenden wir die Aufnahme mit dem roten
+          viereckigen Knopf. Bei näherem Betrachten von Paket 13 sehen wir im
+          sogenannten Paket Bytes Bereich, der im unteren Teil der Anwendung zu
+          sehen ist, die Paketdaten in Hexadezimal-Darstellung. Der blau
+          markierte Teil lässt uns erkennen, was der Inhalt der Nachricht
+          gewesen ist. Außerdem wird es uns in Klartext nochmal angezeigt,
+          nämlich „Test123“. Im folgenden Video ist alles kompakt dargestellt.
         </Paragraph>
         <div
           className="overflow-hidden rounded-lg"

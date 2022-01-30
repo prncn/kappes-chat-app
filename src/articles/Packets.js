@@ -88,7 +88,7 @@ export function Packets() {
           <input
             autoComplete={false}
             spellCheck={false}
-            className="p-3 rounded focus:outline-none border bg-transparent"
+            className="p-3 rounded focus:outline-none border focus:border-current transition bg-transparent"
             value={bufferMessage}
             onChange={(event) => setBufferMessage(event.target.value)}
           />

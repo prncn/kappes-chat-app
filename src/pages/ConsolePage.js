@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import Typical from 'react-typical';
 import JSONPretty from 'react-json-prettify';
 import { dracula } from 'react-json-prettify/dist/themes';
+import { useNavigate } from 'react-router-dom';
 
 async function fetchData(url) {
   const data = await fetch(url);
@@ -14,6 +15,7 @@ export function ConsolePage() {
   const [lines, setLines] = useState([]);
   const [hasEntered, setHasEntered] = useState(false);
   const inputRef = useRef();
+  const navigate = useNavigate();
 
   function Line({ command }) {
     async function handleSubmit(e) {
@@ -48,6 +50,10 @@ export function ConsolePage() {
             inputRef.current.value = '';
             return;
 
+          case 'help':
+            navigate('/docs/mitm konsole');
+            return;
+
           case 'read':
             result.out = 'packet: length 88, ["receive","someos"]';
             break;
@@ -62,9 +68,9 @@ export function ConsolePage() {
             result.out = packet;
             break;
 
-          case 'headers':
-            const headers = await fetchData(ENDPOINT + '/headers');
-            result.out = headers;
+          case 'paypal':
+            const paypal = await fetchData(ENDPOINT + '/account');
+            result.out = paypal;
             break;
 
           case 'inject':

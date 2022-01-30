@@ -1,17 +1,16 @@
 import React from 'react';
 import { Heading, Paragraph } from '../pages/Docs';
+import VisibilitySensor from 'react-visibility-sensor';
+import Typical from 'react-typical';
 
 export function Schutzmechanismen({ lightMode, setLightMode }) {
   return (
-    <div className="w-4/5 relative space-y-6">
-      <div
-        className={`absolute -top-40 -right-40 bg-no-repeat ${
-          !lightMode ? 'bg-lock-main' : 'bg-dev'
-        }`}
-        style={{ height: 912, width: 912 }}
-      />
-      <Heading main>Schutzmechanismen</Heading>
-      <Paragraph short>
+    <div className="w-4/5 space-y-6">
+      <Heading main sub>
+        Schutzmechanismen
+      </Heading>
+      <Heading sub>Als Nutzer und Entwickler</Heading>
+      <Paragraph>
         Mit unseren Angriffen konnten wir die Sicherheitslücken ausnutzen und
         zeigen, welche Gefahren bestehen. Neben dem Abfangen der Nachrichten bis
         hin zur Modifikation der eigentlichen Nachricht und das Versenden eines
@@ -19,74 +18,87 @@ export function Schutzmechanismen({ lightMode, setLightMode }) {
         vermeiden bzw. erkennen kann.
       </Paragraph>
       <div
-        className="text-6xl cursor-pointer font-bold opacity-80 hover:opacity-100 w-1/2 bg-gradient-to-r from-indigo-300 to-pink-500 animate-gradient-y bg-clip-text text-transparent"
-        onClick={() => setLightMode(!lightMode)}
-      >
-        Wechseln zur {lightMode ? 'Entwicklersicht' : 'Benutzersicht'}
-      </div>
+        className={`overflow-hidden bg-cover bg-no-repeat h-96 w-3/4 rounded-xl ${
+          !lightMode ? 'bg-card-2' : 'bg-dev'
+        }`}
+      />
       <div className="my-20" />
-
-      {lightMode ? (
-        <>
-          <Heading main>Als Benutzer</Heading>
-          <Paragraph short>
-            Wie bereits in vorherigen Kapiteln angedeutet, schauen wir uns die
-            Schutzmechanismen aus Benutzer- und Entwicklersicht an. Wir listen
-            zuerst die Möglichkeiten auf, die ein Benutzer hat, um die
-            Sicherheit einer Seite zu überprüfen.
-          </Paragraph>
-          <Heading>HTTPS und SSL-Zertifikat</Heading>
-          <Paragraph>
-            Da sich dieser Kurs hauptsächlich um die Verschlüsselungsprotokolle
-            http und https dreht, ist es offensichtlich, dass die erste
-            Schutzmaßnahme das Überprüfen der URL ist. Verwendet die Seite das
-            https Protokoll anstatt des http Protokolls, deutet dies darauf hin,
-            dass die Seite verschlüsselt und durch ein SSL-Zertifikat gesichert
-            ist. Https wird häufig für Online-Banking und Einkäufe verwendet und
-            verschlüsselt den Datenaustausch zwischen Client und Server.
-            Chat-Messenger verwenden meistens eine Verschlüsselung, sodass die
-            Nachrichten nicht eingesehen bzw. modifiziert werden können. Da
-            SSL-Zertifikate auch verfälscht werden können, werden wir in
-            kommenden Schutzmechanismen darauf eingehen, wie man solche erkennt.
-          </Paragraph>
-          <Heading>Datenschutzrichtlinien</Heading>
-          <Paragraph>
-            Eine Website sollte über eine Datenschutzrichtlinie verfügen, in
-            welcher niedergeschrieben ist, wie mit den Daten umgegangen wird und
-            wie sie geschützt werden. Da es meistens aufgrund gesetzlicher
-            Vorgaben vorgeschrieben ist, sollten die ersten Alarmglocken läuten,
-            wenn keine vorhanden sein sollte.
-          </Paragraph>
-          <Heading>Kontaktinformationen</Heading>
-          <Paragraph>
-            Eine Seite wird außerdem über Kontaktinformationen verfügen, wenn
-            sie seriös sein sollte. Darunter gehört eine Telefonnummer, eine
-            E-Mail-Adresse, Angaben zur physischen Adresse sowie, falls
-            vorhanden, Hinweise auf Social-Media-Kanäle.{' '}
-          </Paragraph>
-          <Heading>Website-Sicherheitsprüfung</Heading>
-          <Paragraph>
-            Man kann auf schnelle Art und Weise mithilfe eines
-            Website-Sicherheits-Checker kontrollieren, ob eine Seite sicher ist.
-            Neben vielen Seiten bietet Google ein solches Dienst an. Laut Google
-            überprüften sie täglich Milliarden von URLs auf die Sicherheit und
-            entdeckt dabei tausende neue unsichere Websites.
-          </Paragraph>
-          <Heading>Versteckte Malware</Heading>
-          <Paragraph>
-            Es kann auch sein, dass eine ihnen bereits bekannte Seite im Laufe
-            der Zeit Opfer eines Angriffs wurde. Dabei kann die Seite mit einer
-            Malware infiziert oder so gestaltet worden sein, dass es anderen
-            schaden möchte. Erkennen lässt sich sowas zum Beispiel durch
-            auftauchende Pop-ups, die mit einem Klick Malware herunterladen
-            können, Weiterleitungen auf andere URLs, die möglicherweise als
-            Phishing-Seite fungieren können, komische Werbungen, die für die
-            Seite unüblich sein könnten und vieles mehr.
-          </Paragraph>
-        </>
-      ) : (
-        <>
-          <div className="my-20" />
+      <>
+        <VisibilitySensor
+          partialVisibility
+          onChange={(isVisible) => {
+            isVisible ? setLightMode(true) : setLightMode(false);
+            isVisible ? console.log('IN VIEW') : console.log('NOT IN VIEW');
+          }}
+        >
+          <div className={`flex flex-col space-y-6 z-50 `}>
+            <Heading main>Als Benutzer</Heading>
+            <Paragraph>
+              Wie bereits in vorherigen Kapiteln angedeutet, schauen wir uns die
+              Schutzmechanismen aus Benutzer- und Entwicklersicht an. Wir listen
+              zuerst die Möglichkeiten auf, die ein Benutzer hat, um die
+              Sicherheit einer Seite zu überprüfen.
+            </Paragraph>
+            <Heading>HTTPS und SSL-Zertifikat</Heading>
+            <Paragraph>
+              <div className="text-7xl font-semibold py-10 flex">
+                <img src={'/iconhome.svg'} alt="" className="w-6 my-1" />
+                <Typical steps={['HTTP', 5000, 'TL', 5000]} loop={Infinity} />
+                <div className="text-green-400">S</div>
+              </div>
+              Da sich dieser Kurs hauptsächlich um die
+              Verschlüsselungsprotokolle http und https dreht, ist es
+              offensichtlich, dass die erste Schutzmaßnahme das Überprüfen der
+              URL ist. Verwendet die Seite das https Protokoll anstatt des http
+              Protokolls, deutet dies darauf hin, dass die Seite verschlüsselt
+              und durch ein SSL-Zertifikat gesichert ist. Https wird häufig für
+              Online-Banking und Einkäufe verwendet und verschlüsselt den
+              Datenaustausch zwischen Client und Server. Chat-Messenger
+              verwenden meistens eine Verschlüsselung, sodass die Nachrichten
+              nicht eingesehen bzw. modifiziert werden können. Da
+              SSL-Zertifikate auch verfälscht werden können, werden wir in
+              kommenden Schutzmechanismen darauf eingehen, wie man solche
+              erkennt.
+            </Paragraph>
+            <Heading>Datenschutzrichtlinien</Heading>
+            <Paragraph>
+              Eine Website sollte über eine Datenschutzrichtlinie verfügen, in
+              welcher niedergeschrieben ist, wie mit den Daten umgegangen wird
+              und wie sie geschützt werden. Da es meistens aufgrund gesetzlicher
+              Vorgaben vorgeschrieben ist, sollten die ersten Alarmglocken
+              läuten, wenn keine vorhanden sein sollte.
+            </Paragraph>
+            <Heading>Kontaktinformationen</Heading>
+            <Paragraph>
+              Eine Seite wird außerdem über Kontaktinformationen verfügen, wenn
+              sie seriös sein sollte. Darunter gehört eine Telefonnummer, eine
+              E-Mail-Adresse, Angaben zur physischen Adresse sowie, falls
+              vorhanden, Hinweise auf Social-Media-Kanäle.{' '}
+            </Paragraph>
+            <Heading>Website-Sicherheitsprüfung</Heading>
+            <Paragraph>
+              Man kann auf schnelle Art und Weise mithilfe eines
+              Website-Sicherheits-Checker kontrollieren, ob eine Seite sicher
+              ist. Neben vielen Seiten bietet Google ein solches Dienst an. Laut
+              Google überprüften sie täglich Milliarden von URLs auf die
+              Sicherheit und entdeckt dabei tausende neue unsichere Websites.
+            </Paragraph>
+            <Heading>Versteckte Malware</Heading>
+            <Paragraph>
+              Es kann auch sein, dass eine ihnen bereits bekannte Seite im Laufe
+              der Zeit Opfer eines Angriffs wurde. Dabei kann die Seite mit
+              einer Malware infiziert oder so gestaltet worden sein, dass es
+              anderen schaden möchte. Erkennen lässt sich sowas zum Beispiel
+              durch auftauchende Pop-ups, die mit einem Klick Malware
+              herunterladen können, Weiterleitungen auf andere URLs, die
+              möglicherweise als Phishing-Seite fungieren können, komische
+              Werbungen, die für die Seite unüblich sein könnten und vieles
+              mehr.
+            </Paragraph>
+          </div>
+        </VisibilitySensor>
+        <div className="my-20" />
+        <div className="flex flex-col space-y-6">
           <Heading main>Als Entwickler</Heading>
           <Paragraph>
             Ist man dabei, eine eigene Seite zu kreieren, welche mit
@@ -151,8 +163,8 @@ export function Schutzmechanismen({ lightMode, setLightMode }) {
             regelmäßige Backups durchzuführen, um jederzeit auf eine vorherige
             Version zurückwechseln zu können.
           </Paragraph>
-        </>
-      )}
+        </div>
+      </>
     </div>
   );
 }

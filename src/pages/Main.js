@@ -3,6 +3,7 @@ import ChatApp from './ChatApp';
 import React from 'react';
 import { ConsolePage } from './ConsolePage';
 import { Link } from 'react-router-dom';
+import Typical from 'react-typical';
 
 export default function Main() {
   const topics = [
@@ -10,7 +11,6 @@ export default function Main() {
     { name: 'Was ist SSL/TLS?', link: '/docs/ssl' },
     { name: 'Chat App', link: '/chatapp' },
     { name: 'Web Sockets', link: '/docs' },
-    { name: 'Zertifikate', link: '/docs' },
     { name: 'Packets', link: '/docs/packets' },
     { name: 'Phishing Demo', link: '/paypal' },
   ];
@@ -22,16 +22,24 @@ export default function Main() {
           Platin
         </p>
         <div className="flex flex-col justify-center w-2/3 mt-20 text-ebony-100 space-y-4">
-          <h1 className="text-9xl font-bold text-yellow-50 tracking-tight">
-            MITM <br />
+          <h1 className="text-9xl font-bold lowercase text-yellow-50 tracking-tight">
             <div className="bg-gradient-to-r from-yellow-200 to-pink-700 text-transparent animate-gradient-y bg-clip-text">
+              MITM <br />
               DEMO
             </div>
           </h1>
-          <p className="text-2xl font-medium text-white py-5">
-            Erstellen und Validieren von Sicherheitsdemos. <br />
-            Von Studenten für Studenten.
-          </p>
+          <Typical
+            steps={[
+              'Erstellen und Validieren von Sicherheitsdemos.',
+              2000,
+              'Von Studenten für Studenten.',
+              2000,
+              'Man in the Middle Attacks',
+              2000,
+            ]}
+            loop={Infinity}
+            className="text-2xl font-medium text-white py-5"
+          />
           <div className="flex space-x-4 w-1/2">
             <Link to="/docs">
               <button className="rounded px-10 py-4 bg-yellow-200 hover:bg-yellow-300 text-black font-semibold shadow-lg shadow-white">
@@ -45,17 +53,16 @@ export default function Main() {
         </div>
         {/* <div className="bg-lock-main bg-cover absolute top-0 right-0 w-1/2 h-96 bg-no-repeat bg-right"></div> */}
         <div className="absolute top-0 right-0 bg-gradient-to-r from-yellow-200 to-pink-700 h-96 w-96 rounded-b-xl animate-gradient-y" />
-        <div className="my-20 grid grid-cols-4 grid-rows-2 items-start gap-4">
+        <div className="my-20 flex flex-wrap  items-start justify-start gap-4">
           {topics.map((topic, i) => (
             <Link to={topic.link} key={i}>
-              <div
-                className={`${
-                  i === 2 && 'bg-card-1 bg-cover bg-top'
-                } text-white cursor-pointer hover:bg-ebony-900 transition h-40 border border-white rounded flex justify-center items-center`}
-              >
-                <p className={`${i === 2 && 'bg-ebony-800'} p-3 rounded`}>
+              <div className="text-white relative cursor-pointer hover:bg-ebony-900 bg-indigo-400 transition rounded-xl flex h-64 w-72 overflow-hidden">
+                <p className={`p-10 rounded text-3xl w-4/5 font-semibold`}>
                   {topic.name}
                 </p>
+                <div
+                  className={`bg-card-${i} + absolute -bottom-20 -right-20 bg-cover w-full h-full`}
+                />
               </div>
             </Link>
           ))}
@@ -66,7 +73,7 @@ export default function Main() {
           <h1 className="text-4xl font-semibold w-52 py-10 font-mono">
             Demo mit Interaktion.
           </h1>
-          <p className="w-96">
+          <p className="max-w-lg">
             Ziel dieser Website ist es, dass Thema „Website Verschlüsselung mit
             https“ durch eine Mischung aus Hintergrundinformationen, Tutorials
             mit Videoanleitungen und interaktives Testen näher an den Besucher
@@ -86,10 +93,10 @@ export default function Main() {
       </div>
       <div className="bg-yellow-50 w-full flex flex-col items-end bg-lock-main bg-no-repeat bg-left-top">
         <div className="w-1/3 flex flex-col my-20 justify-end">
-          <h1 className="text-4xl font-semibold w-52 py-10 font-mono">
+          <h1 className="text-4xl font-semibold w-52 py-10 font-mono bg-yellow-50 p-3 rounded-lg">
             Sicherheit aus Nutzerperspektive.
           </h1>
-          <p className="w-96">
+          <p className="w-96 bg-yellow-50 p-3 rounded-lg">
             Bei der Demonstration der Angriffe werden wir auf die Schutzziele
             der IT-Sicherheit eingehen und versuchen zu erläutern, wieso wir bei
             den Angriffen gegen diese verstoßen und welche Auswirkungen es haben
@@ -107,10 +114,10 @@ export default function Main() {
       </div>
       <div className="bg-ebony-800 w-full flex flex-col items-center bg-dev bg-no-repeat bg-right-top">
         <div className="w-2/3 flex flex-col text-yellow-50 my-20">
-          <h1 className="text-4xl font-semibold w-52 py-10 font-mono">
+          <h1 className="text-4xl font-semibold w-52 py-10 font-mono bg-ebony-700 p-2 rounded-lg shadow-xl">
             Sicherheit aus Entwicklerperspektive.
           </h1>
-          <p className="w-96">
+          <p className="w-96 bg-ebony-700 p-3 rounded-lg shadow-xl">
             Die Digitalisierung durchdringt sämtliche Lebens-, Arbeits- und
             Geschäftsbereiche. Die Bedeutung von Informations- und
             Cybersicherheit nimmt stetig zu. Die Digitalisierung in Staat,

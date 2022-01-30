@@ -4,6 +4,10 @@ import { Heading, Paragraph } from '../pages/Docs';
 export function Spoofing() {
   return (
     <div className="w-4/5 space-y-6">
+      <div
+        className={`overflow-hidden bg-cover bg-no-repeat w-full rounded-xl bg-card-5`}
+        style={{ height: 500 }}
+      />
       <Heading main>Spoofing und Phishing</Heading>
       <Heading>Was ist Social Engineering?</Heading>
       <Paragraph>

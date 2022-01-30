@@ -1,6 +1,6 @@
 module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
-  darkMode: 'class', 
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
@@ -15,14 +15,17 @@ module.exports = {
           700: '#1a1a1a',
           800: '#1a1a1a',
           900: '#101010',
-        }
+        },
       },
       backgroundImage: {
         'lock-main': "url('img/kingdom-sign-in.png')",
-        'dev': "url('img/kingdom-10.png')",
+        dev: "url('img/kingdom-10.png')",
         'card-0': "url('img/kingdom-11.png')",
         'card-1': "url('img/kingdom-1578.png')",
-        'card-2': "url('img/kingdom-paying-with-card-online.png')",
+        'card-2': "url('img/kingdom-1645.png')",
+        'card-3': "url('img/kingdom-5.png')",
+        'card-4': "url('img/kingdom-wedding-rings.png')",
+        'card-5': "url('img/kingdom-paying-with-card-online.png')",
         'docs-shark': "url('img/VDFM1.png')",
         'docs-burp': "url('img/Burp-Suite-Professional.jpg')",
       },
@@ -44,11 +47,11 @@ module.exports = {
     },
     fontFamily: {
       mono: 'Source Code Pro, monospace',
-      serif: 'Source Code Pro, monospace'
-    }
+      serif: 'Source Code Pro, monospace',
+    },
   },
   variants: {
     extend: {},
   },
   plugins: [],
-}
+};

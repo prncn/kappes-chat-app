@@ -12,6 +12,10 @@ export function SSL() {
         erhalten, damit die Benutzer der Website vertrauen und die Meldung
         "Nicht sicher" in der Adressleiste entfernt wird.
       </Heading>
+      <div
+        className={`overflow-hidden bg-cover bg-no-repeat w-full rounded-xl bg-card-2`}
+        style={{ height: 500 }}
+      />
       <Heading>Voraussetzungen</Heading>
       <Paragraph>
         Um diesem Artikel zu folgen, ist es hilfreich, die folgenden

