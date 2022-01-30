@@ -32,7 +32,7 @@ export function ConsolePage() {
 
       const ENDPOINT = `http${
         JSON.parse(process.env.REACT_APP_SERVER_HTTPS) ? 's' : ''
-      }://platin.demo.com:3001`;
+      }://platin.demo.com:3001/api`;
 
       if (!/^ *$/.test(input)) {
         const inputArray = input.split(' ');
@@ -51,7 +51,7 @@ export function ConsolePage() {
             return;
 
           case 'help':
-            navigate('/docs/mitm konsole');
+            navigate('/docs/mitmkonsole');
             return;
 
           case 'read':
@@ -78,7 +78,7 @@ export function ConsolePage() {
             if (injectMsg === undefined) {
               result.out = `Usage "inject <message>" or "inject clear" to send original messages`;
             } else {
-              await fetch(`ENDPOINT/inject?msg=${injectMsg}`);
+              await fetch(ENDPOINT + `/inject?msg=${injectMsg}`);
               if (injectMsg === 'clear') {
                 result.out = 'Cleared message tampering';
               } else {
@@ -114,7 +114,7 @@ export function ConsolePage() {
       <>
         <div className="h-5 flex w-full mt-2">
           <p className="w-auto mr-3 flex items-center">user@root ~ $</p>
-          <form onSubmit={handleSubmit} className="flex items-center">
+          <form onSubmit={handleSubmit} className="flex items-center flex-grow">
             <input
               type="text"
               className="text-white bg-transparent w-full focus:outline-none"

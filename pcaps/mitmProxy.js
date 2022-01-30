@@ -64,8 +64,8 @@ prompt.get(properties, function (err, result) {
     process.env['HTTPS'] ? 's' : ''
   }://platin.demo.com:3000`;
 
-  // exec('serve -s build');
-  exec('npm start');
+  exec('serve -s build');
+  // exec('npm start');
   setTimeout(() => {
     open(APP_URL);
   }, 2000);
@@ -113,25 +113,25 @@ prompt.get(properties, function (err, result) {
     console.log('POST placeholder invoked');
   });
 
-  app.get('/devices', (req, res) => {
+  app.get('/api/devices', (req, res) => {
     return res.send(getDeviceList());
   });
 
-  app.get('/account', async (req, res) => {
+  app.get('/api/account', async (req, res) => {
     return res.send(getPhishingAccount());
   });
 
-  app.get('/packet', async (req, res) => {
+  app.get('/api/packet', async (req, res) => {
     return res.send(getRecentPackets());
   });
 
-  app.get('/inject', async (req, res) => {
+  app.get('/api/inject', async (req, res) => {
     if ('msg' in req.query) {
       return res.send(injectMessage(req.query.msg));
     }
   });
 
-  app.get('/expose', async (req, res) => {
+  app.get('/api/expose', async (req, res) => {
     console.log(req.query.get);
     return res.send(exposeCert(req.query.get));
   });
@@ -175,7 +175,7 @@ prompt.get(properties, function (err, result) {
     if (
       chunk.length > 10 &&
       chunk.length < 300 &&
-      !ctx.clientToProxyRequest.url.startsWith('/ENDPOINT/')
+      !ctx.clientToProxyRequest.url.startsWith('/api')
     ) {
       let rawPacketData = chunk.slice(2, chunk.length);
       let decodedASCII = rawPacketData.toString();
