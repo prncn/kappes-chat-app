@@ -2,7 +2,7 @@ import React from 'react';
 import { Code, Heading, Paragraph } from '../pages/Docs';
 import Typical from 'react-typical';
 
-export function Konsole() {
+export function Konsole({ passHeight }) {
   return (
     <div className="w-4/5 space-y-3 bg-no-repeat">
       <Heading main>Die Konsole</Heading>

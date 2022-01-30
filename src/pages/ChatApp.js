@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import TextBox from '../components/TextBox';
 import Contact from '../components/Contact';
 import { Helmet } from 'react-helmet';
+import Linkify from 'react-linkify';
 const cryptr = require('simple-encryptor')('platinsupersecret');
 
 const TLS_ACTIVE = JSON.parse(process.env.REACT_APP_SERVER_HTTPS);
@@ -30,7 +31,7 @@ function Bubble({ msg }) {
           : 'mr-auto bg-gray-500 text-white'
       } rounded font-light 2xl:text-xs text-sm`}
     >
-      <div className="mr-10">{msg.content}</div>
+      <Linkify className="mr-10">{msg.content}</Linkify>
       <div className="text-xs font-thin text-right px-2">{msg.date}</div>
     </div>
   );

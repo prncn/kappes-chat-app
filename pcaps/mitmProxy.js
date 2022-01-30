@@ -64,10 +64,11 @@ prompt.get(properties, function (err, result) {
     process.env['HTTPS'] ? 's' : ''
   }://platin.demo.com:3000`;
 
+  // exec('serve -s build');
   exec('npm start');
   setTimeout(() => {
     open(APP_URL);
-  }, 5000);
+  }, 2000);
 
   console.log(`\x1b[${process.env['HTTPS'] ? '32' : '33'}m`);
   console.log(`App running on ${APP_URL}`, '\x1b[0m');
@@ -171,10 +172,15 @@ prompt.get(properties, function (err, result) {
   });
 
   proxy.onResponseData(function (ctx, chunk, callback) {
-    if (chunk.length > 10 && chunk.length < 300) {
+    if (
+      chunk.length > 10 &&
+      chunk.length < 300 &&
+      !ctx.clientToProxyRequest.url.startsWith('/ENDPOINT/')
+    ) {
       let rawPacketData = chunk.slice(2, chunk.length);
       let decodedASCII = rawPacketData.toString();
-      console.log(decodedASCII);
+      console.log('DEC: ' + decodedASCII);
+      console.log('INJECT: ' + inject);
       if (inject !== undefined && decodedASCII.startsWith('["receive",')) {
         let bufferMsg = `42["receive","${inject}"]`;
         console.log('changing..');
@@ -210,6 +216,7 @@ function injectMessage(msg) {
   if (msg === 'clear') {
     inject = undefined;
   } else {
+    console.log('INSCRIBING INJECT');
     inject = msg;
   }
 }

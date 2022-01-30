@@ -76,7 +76,7 @@ export function Burp() {
         >
           <ReactPlayer
             muted
-            url="https://streamable.com/ig7bcj"
+            url="https://streamable.com/jut94w"
             playsinline
             width="100%"
             height="100%"

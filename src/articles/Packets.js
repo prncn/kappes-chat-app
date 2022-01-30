@@ -86,7 +86,7 @@ export function Packets() {
         </div>
         <div>
           <input
-            autoComplete={false}
+            autoComplete="false"
             spellCheck={false}
             className="p-3 rounded focus:outline-none border focus:border-current transition bg-transparent"
             value={bufferMessage}

@@ -66,14 +66,14 @@ export function Wireshark() {
         >
           <ReactPlayer
             muted
-            url="https://streamable.com/l7eamj"
+            url="https://streamable.com/32jkck"
             playsinline
             width="100%"
             height="100%"
             playing="true"
           />
         </div>
-        <div className="h-full w-80 bg-red-400 absolute -top-10 right-0 bg-docs-shark rounded-lg" />
+        <div className="h-full w-80 bg-red-400 absolute -top-10 right-0 bg-docs-shark rounded-lg hidden xl:block" />
       </div>
     </>
   );

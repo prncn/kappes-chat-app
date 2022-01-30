@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, NavLink, useParams } from 'react-router-dom';
 import { Burp } from '../articles/Burp';
@@ -12,12 +12,8 @@ import Switch from 'react-switch';
 import UniLogoLight from '../img/1200px-Frankfurt_University_of_Applied_Sciences_logo_notype.png';
 import UniLogoDark from '../img/1200px-Frankfurt_University_of_Applied_Sciences_logo_black_notype.png';
 
-export function Paragraph({ children, short }) {
-  return (
-    <p className={`text-justify pb-5 ${short ? 'w-1/3' : 'w-2/3'}`}>
-      {children}
-    </p>
-  );
+export function Paragraph({ children }) {
+  return <div className={`text-justify pb-5 xl:w-2/3 w-full`}>{children}</div>;
 }
 
 export function Heading({ children, main, sub }) {
@@ -44,6 +40,8 @@ export function Docs() {
   const params = useParams();
   const currentPage = params?.page;
   const [lightMode, setLightMode] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const scrollRef = useRef();
 
   class chapter {
     constructor(title, pages) {
@@ -51,91 +49,133 @@ export function Docs() {
       this.pages = pages;
     }
   }
+
   const chapters = [
     new chapter('Tools', ['Wireshark', 'Burp']),
-    new chapter('Angriffe', ['Packets', 'MITM Konsole', 'Spoofing']),
+    new chapter('Angriffe', ['Packets', 'Konsole', 'Spoofing']),
     new chapter('Schutz', ['Schutzmechanismen', 'SSL']),
   ];
 
+  function scrollHandler() {
+    const currentPos = scrollRef.current.scrollTop;
+    const scrollHeight =
+      scrollRef.current.scrollHeight - scrollRef.current.clientHeight;
+    const scrollPos = Math.min(
+      Math.floor((currentPos / scrollHeight) * 100),
+      100
+    );
+    setScrollProgress(scrollPos);
+  }
+
   return (
-    <div
-      className={`h-screen flex transition-all ${
-        lightMode ? 'bg-ebony-50 text-black' : 'bg-ebony-700 text-ebony-50'
-      }`}
-    >
-      <Helmet>
-        <title>Docs | Platin Demo</title>
-      </Helmet>
-      <a
-        href="https://www.frankfurt-university.de/"
-        className="absolute bottom-10 right-16"
+    <div>
+      <div
+        className={`w-full ${lightMode ? 'bg-ebony-50' : 'bg-ebony-700'}`}
+        style={{ height: '1vh' }}
       >
-        <img src={lightMode ? UniLogoDark : UniLogoLight} alt="" width={100} />
-      </a>
-      <div className="h-full w-1/4 flex flex-col pl-20">
-        <div className="font-semibold">
-          <Link to="/">
-            <div className="font-bold pt-10">Home</div>
-          </Link>
-          <Link to="/docs">
-            <div className="font-bold pt-4">Docs</div>
-          </Link>
-          {chapters.map((chapter) => (
-            <div key={chapter.title}>
-              <div className="font-bold pt-10">{chapter.title}</div>
-              {chapter.pages.map((page) => (
-                <NavLink
-                  key={page}
-                  to={page.toLowerCase()}
-                  className={({ isActive }) =>
-                    `${
-                      isActive ? 'text-yellow-400' : 'text-ebony-400'
-                    } hover:text-ebony-100`
-                  }
-                >
-                  <div className="my-2">{page}</div>
-                </NavLink>
-              ))}
-            </div>
-          ))}
-        </div>
-        <div className="mt-auto py-4 flex space-x-2 font-semibold text-sm items-center">
-          <span className="opacity-80">Licht schalten</span>
-          <Switch
-            checked={lightMode}
-            onChange={setLightMode}
-            onColor="#c7d2fe"
-            onHandleColor="#6366f1"
-            uncheckedIcon={false}
-            checkedIcon={false}
-            height={25}
-            width={48}
-          />
-        </div>
-      </div>
-      {!lightMode && (
         <div
-          className={`h-full w-1 bg-gradient-to-t from-ebony-700 via-ebony-600 to-ebony-700`}
+          className="h-full bg-indigo-400"
+          style={{ width: `${scrollProgress}%` }}
         />
-      )}
-      <div className="p-10 w-full flex items-center flex-col overflow-y-auto py-20">
-        {
+      </div>
+      <div
+        className={`flex hidescrollbar transition-all ${
+          lightMode ? 'bg-ebony-50 text-black' : 'bg-ebony-700 text-ebony-50'
+        }`}
+        style={{ height: '99vh' }}
+      >
+        <Helmet>
+          <title>Docs | Platin Demo</title>
+        </Helmet>
+        <a
+          href="https://www.frankfurt-university.de/"
+          className="absolute bottom-10 right-16"
+        >
+          <img
+            src={lightMode ? UniLogoDark : UniLogoLight}
+            alt=""
+            width={100}
+          />
+        </a>
+        <div className="h-full w-1/4 flex flex-col pl-20 sticky">
+          <div className="font-semibold">
+            <Link to="/">
+              <div className="font-bold pt-10 text-ebony-400 hover:text-ebony-100 text-lg">
+                Home
+              </div>
+            </Link>
+            <NavLink
+              to="/docs"
+              className={({ isActive }) =>
+                `${
+                  isActive ? 'text-indigo-400' : 'text-ebony-400'
+                } hover:text-ebony-100`
+              }
+            >
+              <div className="font-bold text-lg">Docs</div>
+            </NavLink>
+            {chapters.map((chapter) => (
+              <div key={chapter.title}>
+                <div className="font-bold pt-10">{chapter.title}</div>
+                {chapter.pages.map((page) => (
+                  <NavLink
+                    key={page}
+                    to={page.toLowerCase()}
+                    className={({ isActive }) =>
+                      `${
+                        isActive ? 'text-indigo-400' : 'text-ebony-400'
+                      } hover:text-ebony-100`
+                    }
+                  >
+                    <div className="my-2">{page}</div>
+                  </NavLink>
+                ))}
+              </div>
+            ))}
+          </div>
+          <div className="mt-auto py-4 flex space-x-2 font-semibold text-sm items-center">
+            <span className="text-ebony-400">Licht schalten</span>
+            <Switch
+              checked={lightMode}
+              onChange={setLightMode}
+              onColor="#c7d2fe"
+              onHandleColor="#6366f1"
+              uncheckedIcon={false}
+              checkedIcon={false}
+              height={25}
+              width={48}
+            />
+          </div>
+        </div>
+        {!lightMode && (
+          <div
+            className={`h-full w-1 bg-gradient-to-t from-ebony-700 via-ebony-600 to-ebony-700 hidden xl:block`}
+          />
+        )}
+
+        <div
+          className="p-10 w-full flex items-center flex-col overflow-y-auto py-20 hidescrollbar"
+          onScroll={scrollHandler}
+          ref={scrollRef}
+        >
           {
-            undefined: <Intro />,
-            wireshark: <Wireshark />,
-            burp: <Burp />,
-            packets: <Packets />,
-            ssl: <SSL />,
-            schutzmechanismen: (
-              <Schutzmechanismen
-                lightMode={lightMode}
-                setLightMode={setLightMode}
-              />
-            ),
-            'mitm konsole': <Konsole />,
-            spoofing: <Spoofing />,
-          }[currentPage]
-        }
+            {
+              undefined: <Intro />,
+              wireshark: <Wireshark />,
+              burp: <Burp />,
+              packets: <Packets />,
+              ssl: <SSL />,
+              schutzmechanismen: (
+                <Schutzmechanismen
+                  lightMode={lightMode}
+                  setLightMode={setLightMode}
+                />
+              ),
+              konsole: <Konsole />,
+              spoofing: <Spoofing />,
+            }[currentPage]
+          }
+        </div>
       </div>
     </div>
   );

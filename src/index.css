@@ -25,3 +25,11 @@ code {
 .__section-pad {
   @apply py-3 px-3;
 }
+
+.hidescrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hidescrollbar {
+  -ms-overflow-style: none;
+}

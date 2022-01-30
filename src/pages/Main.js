@@ -7,7 +7,7 @@ import Typical from 'react-typical';
 
 export default function Main() {
   const topics = [
-    { name: 'Tools', link: '/docs/wireshark' },
+    { name: 'Konsole', link: '/mitmkonsole' },
     { name: 'Was ist SSL/TLS?', link: '/docs/ssl' },
     { name: 'Chat App', link: '/chatapp' },
     { name: 'Web Sockets', link: '/docs' },

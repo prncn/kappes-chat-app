@@ -2,6 +2,9 @@ import React from 'react';
 import { Heading, Paragraph } from '../pages/Docs';
 import VisibilitySensor from 'react-visibility-sensor';
 import Typical from 'react-typical';
+import ImageDatenschutz from '../img/goop-website-footer-privacy-policy-highlighted.jpg';
+import ImageGoogle from '../img/thread-37465811-17980963790677315180.png';
+import ImageKingSmart from '../img/kingdom-smart-house-interface.png';
 
 export function Schutzmechanismen({ lightMode, setLightMode }) {
   return (
@@ -18,9 +21,10 @@ export function Schutzmechanismen({ lightMode, setLightMode }) {
         vermeiden bzw. erkennen kann.
       </Paragraph>
       <div
-        className={`overflow-hidden bg-cover bg-no-repeat h-96 w-3/4 rounded-xl ${
+        className={`overflow-hidden bg-cover bg-no-repeat w-full rounded-xl ${
           !lightMode ? 'bg-card-2' : 'bg-dev'
         }`}
+        style={{ height: '28rem' }}
       />
       <div className="my-20" />
       <>
@@ -41,9 +45,11 @@ export function Schutzmechanismen({ lightMode, setLightMode }) {
             </Paragraph>
             <Heading>HTTPS und SSL-Zertifikat</Heading>
             <Paragraph>
-              <div className="text-7xl font-semibold py-10 flex">
-                <img src={'/iconhome.svg'} alt="" className="w-6 my-1" />
-                <Typical steps={['HTTP', 5000, 'TL', 5000]} loop={Infinity} />
+              <div className="text-7xl font-semibold py-10 flex items-center justify-center">
+                <div className="text-green-400">
+                  <IconLock />
+                </div>
+                <Typical steps={['HTTP', 5000, 'TL', 5000]} />
                 <div className="text-green-400">S</div>
               </div>
               Da sich dieser Kurs hauptsächlich um die
@@ -61,6 +67,10 @@ export function Schutzmechanismen({ lightMode, setLightMode }) {
               erkennt.
             </Paragraph>
             <Heading>Datenschutzrichtlinien</Heading>
+            <figure className="my-10">
+              <img src={ImageDatenschutz} alt="" className="rounded-lg" />
+              <figcaption>Goop Datenschutzrichtlinien</figcaption>
+            </figure>
             <Paragraph>
               Eine Website sollte über eine Datenschutzrichtlinie verfügen, in
               welcher niedergeschrieben ist, wie mit den Daten umgegangen wird
@@ -77,6 +87,10 @@ export function Schutzmechanismen({ lightMode, setLightMode }) {
             </Paragraph>
             <Heading>Website-Sicherheitsprüfung</Heading>
             <Paragraph>
+              <figure className="my-10">
+                <img src={ImageGoogle} alt="" className="rounded-lg" />
+                <figcaption>Google Sicherheitsprüfung</figcaption>
+              </figure>
               Man kann auf schnelle Art und Weise mithilfe eines
               Website-Sicherheits-Checker kontrollieren, ob eine Seite sicher
               ist. Neben vielen Seiten bietet Google ein solches Dienst an. Laut
@@ -109,6 +123,23 @@ export function Schutzmechanismen({ lightMode, setLightMode }) {
           </Paragraph>
           <Heading>HTTPS und SSL-Zertifikat</Heading>
           <Paragraph>
+            <div className="flex flex-col items-center space-y-3 my-10">
+              <div className="p-2 bg-white text-black rounded-lg flex items-center w-3/4 shadow-lg hover:opacity-80 transition">
+                <div className="text-green-400 mr-2 animate-pulse">
+                  <IconLock />
+                </div>
+                <div className="text-green-400">https</div>
+                ://platin.demo.com
+              </div>
+
+              <div className="p-2 bg-white text-black rounded-lg flex items-center w-3/4 shadow-lg hover:opacity-80 transition">
+                <div className="text-red-400 mr-2 animate-pulse">
+                  <IconWarn />
+                </div>
+                <div className="text-red-400">http</div>
+                ://platin.demo.com
+              </div>
+            </div>
             Es ist keine große Überraschung. Eine Seite zu verschlüsseln ist das
             wichtigste, was man als Entwickler erledigen kann. Wir haben aus
             Benutzersicht bereits erläutert, dass man sein Augenmerk auf die URL
@@ -118,7 +149,7 @@ export function Schutzmechanismen({ lightMode, setLightMode }) {
             früher. So bietet die Zertifizierungsstelle Internet Security
             Research Group (ISRG) mit ihrem Dienst Let’s Encrypt kostenlose
             Zertifikate an und ermöglicht somit eine einfache Umsetzung der
-            Sicherheit.{' '}
+            Sicherheit.
           </Paragraph>
           <Heading>Up-to-date</Heading>
           <Paragraph>
@@ -133,6 +164,7 @@ export function Schutzmechanismen({ lightMode, setLightMode }) {
           </Paragraph>
           <Heading>Zugang zur Seite sichern</Heading>
           <Paragraph>
+            <img src={ImageKingSmart} alt="" />
             Falls die Seite über ein Anmeldeformular verfügt, um Zugang zur
             Seite zu bekommen, sollte eine strenge Passwortrichtlinie unbedingt
             eingebaut werden. Wenn man sich anschaut, dass das häufigste
@@ -166,5 +198,37 @@ export function Schutzmechanismen({ lightMode, setLightMode }) {
         </div>
       </>
     </div>
+  );
+}
+
+function IconLock() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-10 w-10"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+    >
+      <path d="M10 2a5 5 0 00-5 5v2a2 2 0 00-2 2v5a2 2 0 002 2h10a2 2 0 002-2v-5a2 2 0 00-2-2H7V7a3 3 0 015.905-.75 1 1 0 001.937-.5A5.002 5.002 0 0010 2z" />
+    </svg>
+  );
+}
+
+function IconWarn() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-10 w-10"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016zM12 9v2m0 4h.01"
+      />
+    </svg>
   );
 }

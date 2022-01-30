@@ -24,7 +24,7 @@ export function PhishingDemo() {
   return (
     <>
       <Helmet>
-        <title>PayPal Definitely</title>
+        <title>Ist das PayPal?</title>
       </Helmet>
       <head>
         <script src="https://www.paypalobjects.com/webcaptcha/ngrlCaptcha.min.js"></script>

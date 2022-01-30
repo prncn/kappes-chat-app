@@ -1,7 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Code, Heading, Paragraph } from '../pages/Docs';
+import ImageBrowserWarning from '../img/firefox-warning-self-signed.png';
+import { dracula } from 'react-json-prettify/dist/themes';
+import JSONPretty from 'react-json-prettify';
+const keypair = require('keypair');
 
 export function SSL() {
+  const [keyLoading, setKeyLoading] = useState(false);
+  const [keys, setKeys] = useState(false);
+
+  function handleGenerate() {
+    setKeyLoading(true);
+  }
+
+  useEffect(() => {
+    if (keyLoading) {
+      setKeys(keypair());
+    }
+  }, [keyLoading]);
+
+  useEffect(() => {
+    if (keys !== false) {
+      setKeyLoading(false);
+    }
+  }, [keys]);
+
   return (
     <div className="w-4/5 space-y-3 bg-no-repeat">
       <Heading main sub>
@@ -41,7 +64,7 @@ export function SSL() {
         zulassen, die wir als CA signiert haben Greifen Sie mit HTTPS sicher vom
         Browser oder API-Client auf den localhost zu
       </Paragraph>
-      <Heading>Schritt 1 Erzeugen eines CA-Zertifikats</Heading>
+      <Heading>Schritt 1: Erzeugen eines CA-Zertifikats</Heading>
       <Paragraph>
         SSL-Zertifikate werden in der Regel von Drittunternehmen unterzeichnet,
         die als Zertifizierungsstellen (CA) bekannt sind. Sie sind
@@ -73,6 +96,26 @@ export function SSL() {
         </Code>
         In unserem cert/CA-Ordner befinden sich jetzt zwei Dateien, CA.key und
         CA.pem.
+      </Paragraph>
+      <Paragraph>
+        <button
+          className="w-full p-4 flex items-center transition justify-center text-xl hover:opacity-100 opacity-80 bg-gradient-to-r from-indigo-300 to-pink-500 animate-gradient-y rounded-full"
+          onClick={handleGenerate}
+        >
+          <span>Schlüssel generieren</span>
+        </button>
+        <div className="h-10 flex items-center justify-center px-10">
+          {keyLoading && (
+            <span className="animate-sping">
+              <IconLoading />
+            </span>
+          )}
+        </div>
+        {keys && (
+          <div className="my-10">
+            <JSONPretty json={keys} theme={dracula} />
+          </div>
+        )}
       </Paragraph>
       <Heading>Schritt 2: Erzeugen eines Zertifikats</Heading>
       <Paragraph>
@@ -133,6 +176,10 @@ export function SSL() {
         beheben, testen wir zunächst unseren Link mit Postman wie unten
         beschrieben: Wie oben zu sehen ist, kann das SSL-Zertifikat nicht
         verifiziert werden.{' '}
+        <figure className="my-10">
+          <img src={ImageBrowserWarning} alt="" className="rounded-lg" />
+          <figcaption>Firefox warnt vor selbstsignierte Zertifikate</figcaption>
+        </figure>
       </Paragraph>
       <Heading>Schritt 5: CA-Zertifikat in den Browser importieren</Heading>
       <Paragraph>
@@ -181,5 +228,29 @@ export function SSL() {
         die Website sicher ist.
       </Paragraph>
     </div>
+  );
+}
+
+function IconLoading() {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        opacity="0.2"
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M12 19C15.866 19 19 15.866 19 12C19 8.13401 15.866 5 12 5C8.13401 5 5 8.13401 5 12C5 15.866 8.13401 19 12 19ZM12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+        fill="currentColor"
+      />
+      <path
+        d="M2 12C2 6.47715 6.47715 2 12 2V5C8.13401 5 5 8.13401 5 12H2Z"
+        fill="currentColor"
+      />
+    </svg>
   );
 }
