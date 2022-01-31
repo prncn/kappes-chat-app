@@ -18,15 +18,11 @@ const fs = require('fs');
 const path = require('path');
 const prompt = require('prompt');
 const { exec } = require('child_process');
-const open = require('open');
+// const open = require('open');
 
-const cert =
-  fs.readFileSync(path.join(__dirname, '/.http-mitm-proxy/certs/ca.pem')) ||
-  null;
-const key =
-  fs.readFileSync(
-    path.join(__dirname, './.http-mitm-proxy/keys/ca.private.key')
-  ) || null;
+const cert = fs.readFileSync(path.join(__dirname, '../cert.pem'));
+const key = fs.readFileSync(path.join(__dirname, '../key.pem'));
+let HTTPS_ACTIVE = false;
 
 const properties = [
   {
@@ -58,17 +54,21 @@ prompt.get(properties, function (err, result) {
   if (/\b(yes|y|ja|j)\b/i.test(result.encrypt)) {
     process.env['REACT_APP_SERVER_HTTPS'] = true;
     process.env['HTTPS'] = true;
+    HTTPS_ACTIVE = true;
   }
 
   const APP_URL = `http${
     process.env['HTTPS'] ? 's' : ''
   }://platin.demo.com:3000`;
 
-  exec('serve -s build');
+  // exec('serve -s build');
   // exec('npm start');
-  setTimeout(() => {
-    open(APP_URL);
-  }, 2000);
+  // `npx live-server build --port=3000 --cors --entry-file=index.html --host=platin.demo.com --https=./https.config.js`
+  exec(
+    process.env['HTTPS']
+      ? `npm start`
+      : `npx live-server build --port=3000 --cors --entry-file=index.html --host=platin.demo.com `
+  );
 
   console.log(`\x1b[${process.env['HTTPS'] ? '32' : '33'}m`);
   console.log(`App running on ${APP_URL}`, '\x1b[0m');
@@ -106,7 +106,11 @@ prompt.get(properties, function (err, result) {
   app.use(cors());
 
   app.get('/', (req, res) => {
-    return res.send('Backend running');
+    return res.send('Backend running.');
+  });
+
+  app.get('/tls-status', (req, res) => {
+    return res.send(HTTPS_ACTIVE);
   });
 
   app.post('/', (req, res) => {
@@ -135,6 +139,13 @@ prompt.get(properties, function (err, result) {
     console.log(req.query.get);
     return res.send(exposeCert(req.query.get));
   });
+
+  proxy.onCertificateRequired = function (hostname, callback) {
+    return callback(null, {
+      keyFile: key,
+      certFile: cert,
+    });
+  };
 
   proxy.onError(function (ctx, err, errorKind) {
     var url =
@@ -179,8 +190,7 @@ prompt.get(properties, function (err, result) {
     ) {
       let rawPacketData = chunk.slice(2, chunk.length);
       let decodedASCII = rawPacketData.toString();
-      console.log('DEC: ' + decodedASCII);
-      console.log('INJECT: ' + inject);
+      console.log(decodedASCII);
       if (inject !== undefined && decodedASCII.startsWith('["receive",')) {
         let bufferMsg = `42["receive","${inject}"]`;
         console.log('changing..');

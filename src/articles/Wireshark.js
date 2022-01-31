@@ -53,7 +53,7 @@ export function Wireshark() {
           nun eine Nachricht (in unserem Beispiel: Test123) in einem Tab ein,
           sehen wir Aktivität in Wireshark. Wir schreiben im anderen Tab die
           Nachricht „Erhalten!“. Nun beenden wir die Aufnahme mit dem roten
-          viereckigen Knopf. Bei näherem Betrachten von Paket 13 sehen wir im
+          viereckigen Knopf. Bei näherem Betrachten von Paket 101 sehen wir im
           sogenannten Paket Bytes Bereich, der im unteren Teil der Anwendung zu
           sehen ist, die Paketdaten in Hexadezimal-Darstellung. Der blau
           markierte Teil lässt uns erkennen, was der Inhalt der Nachricht
