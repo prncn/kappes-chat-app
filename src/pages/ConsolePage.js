@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import Typical from 'react-typical';
 import JSONPretty from 'react-json-prettify';
 import { dracula } from 'react-json-prettify/dist/themes';
-import { useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 async function fetchData(url) {
   const data = await fetch(url);
@@ -16,6 +16,8 @@ export function ConsolePage() {
   const [hasEntered, setHasEntered] = useState(false);
   const inputRef = useRef();
   const navigate = useNavigate();
+  const location = useLocation().pathname;
+  console.log(location);
 
   function Line({ command }) {
     async function handleSubmit(e) {
@@ -139,7 +141,17 @@ export function ConsolePage() {
   }
 
   return (
-    <div className="h-screen bg-dark text-white w-full flex flex-col justify-center items-center space-y-5 pb-5">
+    <div className="h-screen bg-dark text-white w-full flex flex-col justify-center items-center space-y-5 pb-5 relative">
+      {location !== '/' && (
+        <Link
+          to="/"
+          className="absolute top-10 left-40 text-2xl tracking-tight leading-none font-semibold"
+        >
+          mitm
+          <br />
+          demo
+        </Link>
+      )}
       <div className="text-6xl pr-4 font-semibold">
         Greife die Chat App hier an
       </div>

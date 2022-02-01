@@ -5,6 +5,8 @@ import { ConsolePage } from './ConsolePage';
 import { Link } from 'react-router-dom';
 import Typical from 'react-typical';
 
+const TLS_ACTIVE = JSON.parse(process.env['REACT_APP_SERVER_HTTPS']);
+
 export default function Main() {
   const topics = [
     { name: 'Konsole', link: '/mitmkonsole' },
@@ -23,10 +25,15 @@ export default function Main() {
         </p>
         <div className="flex flex-col justify-center w-2/3 mt-20 text-ebony-100 space-y-4">
           <h1 className="text-9xl font-bold lowercase text-yellow-50 tracking-tight">
-            <div className="bg-gradient-to-r from-yellow-200 to-pink-700 text-transparent animate-gradient-y bg-clip-text">
+            <div
+              className={`bg-gradient-to-r from-yellow-200 ${
+                TLS_ACTIVE ? 'to-green-500' : 'to-pink-700'
+              } text-transparent animate-gradient-y bg-clip-text`}
+            >
               MITM <br />
               DEMO
             </div>
+            {TLS_ACTIVE && <div className="text-green-400">+ HTTPS</div>}
           </h1>
           <Typical
             steps={[
@@ -51,8 +58,11 @@ export default function Main() {
             </button>
           </div>
         </div>
-        {/* <div className="bg-lock-main bg-cover absolute top-0 right-0 w-1/2 h-96 bg-no-repeat bg-right"></div> */}
-        <div className="absolute top-0 right-0 bg-gradient-to-r from-yellow-200 to-pink-700 h-96 w-96 rounded-b-xl animate-gradient-y" />
+        <div
+          className={`absolute top-0 right-0 bg-gradient-to-r from-yellow-200 ${
+            TLS_ACTIVE ? 'to-green-500' : 'to-pink-700'
+          } h-96 w-96 rounded-b-xl animate-gradient-y`}
+        />
         <div className="my-20 flex flex-wrap  items-start justify-start gap-4">
           {topics.map((topic, i) => (
             <Link to={topic.link} key={i}>

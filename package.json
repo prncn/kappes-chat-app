@@ -5,14 +5,9 @@
   "dependencies": {
     "@craco/craco": "^6.4.0",
     "@fontsource/inter": "^4.5.1",
-    "@fontsource/nunito": "^4.5.1",
     "cap": "^0.2.1",
-    "concurrently": "^6.4.0",
-    "electron": "^16.0.4",
-    "gotham-fonts": "^1.0.3",
     "hoxy": "^3.3.1",
     "http-mitm-proxy": "^0.9.0",
-    "ip-packet": "^1.1.0",
     "keypair": "^1.0.4",
     "live-server": "^1.2.1",
     "open": "^8.4.0",
@@ -31,9 +26,7 @@
     "simple-encryptor": "^4.0.0",
     "socket.io": "^4.3.2",
     "socket.io-client": "^4.3.2",
-    "socket.io-encrypt": "^0.2.1",
-    "wait-on": "^6.0.0",
-    "web-vitals": "^1.1.2"
+    "socket.io-encrypt": "^0.2.1"
   },
   "main": "main",
   "scripts": {

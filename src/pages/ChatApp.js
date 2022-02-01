@@ -7,9 +7,7 @@ import { Helmet } from 'react-helmet';
 import Linkify from 'react-linkify';
 const cryptr = require('simple-encryptor')('platinsupersecret');
 
-const TLS_ACTIVE = JSON.parse(process.env.REACT_APP_SERVER_HTTPS);
-// const TLS_ACTIVE = fetch('');
-console.log(TLS_ACTIVE);
+const TLS_ACTIVE = JSON.parse(process.env['REACT_APP_SERVER_HTTPS']);
 const SERVER_URL = `http${TLS_ACTIVE ? 's' : ''}://platin.demo.com:3001`;
 
 const socket = io.connect(SERVER_URL, {

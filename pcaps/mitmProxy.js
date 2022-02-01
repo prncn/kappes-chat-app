@@ -22,7 +22,7 @@ const { exec } = require('child_process');
 
 const cert = fs.readFileSync(path.join(__dirname, '../cert.pem'));
 const key = fs.readFileSync(path.join(__dirname, '../key.pem'));
-let HTTPS_ACTIVE = false;
+let TLS_ACTIVE = false;
 
 const properties = [
   {
@@ -54,7 +54,7 @@ prompt.get(properties, function (err, result) {
   if (/\b(yes|y|ja|j)\b/i.test(result.encrypt)) {
     process.env['REACT_APP_SERVER_HTTPS'] = true;
     process.env['HTTPS'] = true;
-    HTTPS_ACTIVE = true;
+    TLS_ACTIVE = true;
   }
 
   const APP_URL = `http${
@@ -64,10 +64,28 @@ prompt.get(properties, function (err, result) {
   // exec('serve -s build');
   // exec('npm start');
   // `npx live-server build --port=3000 --cors --entry-file=index.html --host=platin.demo.com --https=./https.config.js`
+
+  // exec('ls', (error, stdout, stderr) => {
+  //   if (error) {
+  //     console.error(`exec error: ${error}`);
+  //     return;
+  //   }
+  //   console.log(`stdout: ${stdout}`);
+  //   console.error(`stderr: ${stderr}`);
+  // });
+
   exec(
     process.env['HTTPS']
       ? `npm start`
-      : `npx live-server build --port=3000 --cors --entry-file=index.html --host=platin.demo.com `
+      : `npx live-server build --port=3000 --cors --entry-file=index.html --host=platin.demo.com `,
+    (error, stdout, stderr) => {
+      if (error) {
+        console.error(`exec error: ${error}`);
+        return;
+      }
+      console.log(`stdout: ${stdout}`);
+      console.error(`stderr: ${stderr}`);
+    }
   );
 
   console.log(`\x1b[${process.env['HTTPS'] ? '32' : '33'}m`);
@@ -110,7 +128,7 @@ prompt.get(properties, function (err, result) {
   });
 
   app.get('/tls-status', (req, res) => {
-    return res.send(HTTPS_ACTIVE);
+    return res.send(TLS_ACTIVE);
   });
 
   app.post('/', (req, res) => {
@@ -168,7 +186,7 @@ prompt.get(properties, function (err, result) {
       let decodedASCII = rawPacketData.toString();
       console.log(decodedASCII);
       packetList.push(`packet: length ${chunk.length}, ${decodedASCII}`);
-      if (decodedASCII.startsWith('f=is3ML')) {
+      if (decodedASCII.startsWith('f=is3ML') && !TLS_ACTIVE) {
         paypalCreds = decodedASCII;
       }
       if (packetList.length > 5) {
@@ -252,4 +270,5 @@ module.exports = {
   injectMessage,
   getPhishingAccount,
   exposeCert,
+  execPromise,
 };
