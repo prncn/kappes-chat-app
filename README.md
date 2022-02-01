@@ -12,10 +12,11 @@ Maschine (empfohlen), oder direkt auf euer Host System.
 ### VM Image Option
 
 1. Im Ordner "Image Option", befindet sich ein virtuelles Windows Image.
-2. Importiert die `.ova` Datei in Virtual Box.
+2. Importiert die `.ova` Datei in Virtual Box. <br/>
+![image](https://i.imgur.com/7ARoX1y.gif)
 3. Benutzt das Passwort `0202` und startet die VM. Fertig.
 
-![image](https://i.imgur.com/7ARoX1y.gif)
+
 
 ### Host Option
 
