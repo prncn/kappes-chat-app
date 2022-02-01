@@ -13,14 +13,15 @@ Maschine (empfohlen), oder direkt auf euer Host System.
 
 1. Im Ordner "Image Option", befindet sich ein virtuelles Windows Image.
 2. Importiert die `.ova` Datei in Virtual Box.
-![image](https://user-images.githubusercontent.com/65875722/152023935-98c743f2-ce36-4604-94a6-c561f9c7eadb.png)
-4. Benutzt das Passwort `0202` und startet die VM. Fertig.
+3. Benutzt das Passwort `0202` und startet die VM. Fertig.
+
+![image](https://i.imgur.com/7ARoX1y.gif)
 
 ### Host Option
 
 1. Ladet folgende Software herunter:
    <br/>a. [NodeJS LTS](https://nodejs.org/en/download/)
-   <br/>b. (Falls Windows, bereits vorinstalliert auf Linux) [Ncap for Windows](https://npcap.com/#download)
+   <br/>b. (Nur für Windows, bereits vorinstalliert auf Linux) [Ncap for Windows](https://npcap.com/#download)
 
 2. (Windows) Ändert eure Host Datei folgendermaßen ab:
    Unter `C:\Windows\System32\drivers\etc` findet ihr die Datei `hosts`.
@@ -36,6 +37,6 @@ Maschine (empfohlen), oder direkt auf euer Host System.
    ```
    127.0.0.1:3002
    ```
-   ![image](https://im7.ezgif.com/tmp/ezgif-7-8ee787675e.gif)
+   ![image](https://i.imgur.com/pG5mqEP.gif)
 
 4. Im Ordner "Host Option", startet das PowerShell Skript. Fertig.
