@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.1bea8980.chunk.css",
-    "main.js": "/static/js/main.a2023efd.chunk.js",
-    "main.js.map": "/static/js/main.a2023efd.chunk.js.map",
+    "main.css": "/static/css/main.7fef6aca.chunk.css",
+    "main.js": "/static/js/main.c079daf2.chunk.js",
+    "main.js.map": "/static/js/main.c079daf2.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.776c1e0d.js",
     "runtime-main.js.map": "/static/js/runtime-main.776c1e0d.js.map",
     "static/css/2.2e69fbf2.chunk.css": "/static/css/2.2e69fbf2.chunk.css",
-    "static/js/2.520b9ebf.chunk.js": "/static/js/2.520b9ebf.chunk.js",
-    "static/js/2.520b9ebf.chunk.js.map": "/static/js/2.520b9ebf.chunk.js.map",
+    "static/js/2.0fcdb640.chunk.js": "/static/js/2.0fcdb640.chunk.js",
+    "static/js/2.0fcdb640.chunk.js.map": "/static/js/2.0fcdb640.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.2e69fbf2.chunk.css.map": "/static/css/2.2e69fbf2.chunk.css.map",
-    "static/css/main.1bea8980.chunk.css.map": "/static/css/main.1bea8980.chunk.css.map",
-    "static/js/2.520b9ebf.chunk.js.LICENSE.txt": "/static/js/2.520b9ebf.chunk.js.LICENSE.txt",
+    "static/css/main.7fef6aca.chunk.css.map": "/static/css/main.7fef6aca.chunk.css.map",
+    "static/js/2.0fcdb640.chunk.js.LICENSE.txt": "/static/js/2.0fcdb640.chunk.js.LICENSE.txt",
     "static/media/index.css": "/static/media/kingdom-wedding-rings.4a3b5070.png",
     "static/media/firefox-warning-self-signed.ad156024.png": "/static/media/firefox-warning-self-signed.ad156024.png",
     "static/media/goop-website-footer-privacy-policy-highlighted.25325a62.jpg": "/static/media/goop-website-footer-privacy-policy-highlighted.25325a62.jpg",
@@ -21,8 +21,8 @@
   "entrypoints": [
     "static/js/runtime-main.776c1e0d.js",
     "static/css/2.2e69fbf2.chunk.css",
-    "static/js/2.520b9ebf.chunk.js",
-    "static/css/main.1bea8980.chunk.css",
-    "static/js/main.a2023efd.chunk.js"
+    "static/js/2.0fcdb640.chunk.js",
+    "static/css/main.7fef6aca.chunk.css",
+    "static/js/main.c079daf2.chunk.js"
   ]
 }

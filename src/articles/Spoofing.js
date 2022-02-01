@@ -22,38 +22,38 @@ export function Spoofing() {
         Für unseren Angriff haben wir zwei HTML Dateien verwendet. Die erste
         Datei wurde dafür benutzt, um die PayPal Phishing Seite darzustellen.
         Die zweite wurde für die Weiterleitung an unsere ChatApp verwendet. Zur
-        Erstellung der PayPal Fake Seite geht man auf der Anmeldeseite von
-        PayPal und dann rechtsklick, dort findet man die Option
+        Erstellung der PayPal Fake Seite geht man auf die Anmeldeseite von
+        PayPal und dann Rechtsklick, dort findet man die Option
         „Seitenquellentext anzeigen“. Es öffnet sich ein neues Fenster, wo man
         den Aufbau der Anmeldeseite in HTML Format sehen kann. Die ganzen
         Informationen kann man kopieren und in eine separate HTML Datei nach
         Wunsch ändern und anschließend speichern. In der HTML Datei haben wir
-        nach „action“ gesucht und dort der Name der zweiten HTML Datei
+        nach „action“ gesucht und dort den Namen der zweiten HTML Datei
         hinzugefügt. Wenn der User die Anmeldedaten eingibt und mit „Anmelden“
         bestätigt, dann erfolgt tatsächlich keine Anmeldung, sondern die zweite
         Datei wird geöffnet, um den User zu informieren, dass die Transaktion
         erfolgreich war.
       </Paragraph>
       <Paragraph>
-        Mit Hilfe von Burp Anwendung könnten wir alle Chat Verläufe zwischen
-        zwei Personen überwachen. Wir greifen mitten des Gesprächs an,
+        Mit Hilfe der Burp Anwendung konnten wir alle Chat Verläufe zwischen
+        zwei Personen überwachen. Wir greifen mitten ins Gesprächs ein,
         modifizieren die Nachricht und schicken an die Person, die die Nachricht
         empfangen soll, einen Link, der nicht mit „https“ bezeichnet ist. Da
         diese Nachricht von seinem Bekannten kommt, zweifelt er/sie nicht an die
-        Glaubwürdigkeit des Links, öffnet die Seite und macht die Transaktion.
+        Glaubwürdigkeit des Links, öffnet die Seite und macht die „Transaktion“.
       </Paragraph>
       <Heading>
         Worauf muss man achten und welche Maßnahmen können gegen Social
         Engineering Angriffe ergriffen werden?
       </Heading>
       <Paragraph>
-        Wenn einen Link oder eine Datei dubios erscheint, sollte man kurz
-        darüber nachdenken bevor man den anklickt, die Experten oder jemanden
-        nachfragen, der mehr Erfahrung in der IT-Welt hat.
+        Wenn ein Link oder eine Datei dubios erscheint, sollte man kurz darüber
+        nachdenken, bevor man es anklickt oder jemanden nachfragen, der mehr
+        Erfahrung in der IT-Welt hat.
       </Paragraph>
       <Paragraph>
         Hat man aus Versehen auf einen Link geklickt und seine Anmeldedaten
-        eingegeben, dann sollte man sofort das Passwort ändern und ein neues
+        eingegeben, dann sollte man sofort das Passwort ändern und ein neues,
         komplexeres Passwort vergeben.
       </Paragraph>
       <Heading>Was ist Spoofing?</Heading>
@@ -73,26 +73,25 @@ export function Spoofing() {
       <Heading>Wie funktioniert Spoofing?</Heading>
       <Paragraph>
         Das Ziel des Hackers ist zuerst das Vertrauen des Opfers zu gewinnen.
-        Sie zielen oftmals darauf ab, ihre Opfer durch E-Mail oder Telefon
-        persönliche Daten preiszugeben oder Finanztransaktionen durchzuführen.
-        Die Hacker nutzten meistens E-Mail-Spoofing. Vor allem im Unternehmen
-        fällt den Cyberkriminellen leichter an Daten zu kommen, da die meisten
-        E-Mail kommen scheinbar von den Kollegen, Kunden oder Vorgesetzen. Die
-        Angreifer manipulieren oft die Header-Informationen der E-Mail.
+        Sie zielen oftmals darauf ab, Angreifer nutzten meistens
+        E-Mail-Spoofing. Vor allem fällt es in Unternehmen den Cyberkriminellen
+        leichter, an Daten zu kommen, da die meisten E-Mails scheinbar von den
+        Kollegen, Kunden oder Vorgesetzen kommen. Die Angreifer manipulieren oft
+        die Header-Informationen der E-Mail.
       </Paragraph>
       <Heading>Was ist der Unterschied zwischen Spoofing und Phishing?</Heading>
       <Paragraph>
-        Beim Spoofing versuchen die Hacker eine falsche Identität vorzutäuschen,
-        während bei Phishing versucht wird an vertrauliche sensible
+        Beim Spoofing versuchen Angreifer eine falsche Identität vorzutäuschen,
+        während beim Phishing versucht wird, an vertrauliche, sensible,
         personenbezogene Daten zu gelangen.
       </Paragraph>
       <Heading>Abwehrmaßnahmen gegen Spoofing</Heading>
       <Paragraph>
-        Jeder kann Opfer von Spoofing werden. Der beste Schutz vor Spoofing ist,
-        sie schnellstmöglich zu erkennen. Wenn eine E-Mail verdächtig erscheint,
-        es wird empfohlen die Absenderadresse zu prüfen. Im Zweifelsfall kann
-        man den Absender persönlich anrufen, um zu prüfen, ob die eingegebenen
-        Informationen richtig sein.
+        Jeder kann Opfer von Spoofing werden. Der beste Schutz vor Spoofing ist
+        es, die Täuschung schnellstmöglich zu erkennen. Wenn eine E-Mail
+        verdächtig erscheint, wird empfohlen, die Absenderadresse zu prüfen. Im
+        Zweifelsfall kann man den Absender persönlich anrufen, um zu prüfen, ob
+        die eingegebenen Informationen richtig sind.
       </Paragraph>
     </div>
   );

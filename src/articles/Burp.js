@@ -68,7 +68,13 @@ export function Burp() {
           </Paragraph>
           <Heading>Erweiterung des Angriffs</Heading>
           <Paragraph>
-            In Kapitel <Link to="/docs/spoofing">Spoofing und Phishing</Link>{' '}
+            In Kapitel{' '}
+            <Link
+              to="/docs/spoofing"
+              className="text-yellow-400 hover:text-yellow-300"
+            >
+              Spoofing und Phishing
+            </Link>{' '}
             zeigen wir eine Erweiterung dieses Angriffs durch das Verschicken
             einer identisch aufgebauten PayPal-Seite, um zusätzlich die
             Bankdaten abzufangen. Schließlich geht der Empfänger davon aus, mit
@@ -76,7 +82,13 @@ export function Burp() {
             Modifikation der Nachrichten. Außerdem schauen wir uns, genau wie
             beim Thema Wireshark, Schutzmöglichkeiten aus Benutzer- und
             Entwicklersicht in Kapitel{' '}
-            <Link to="/docs/schutzmechanismen">Schutzmechanismen</Link> an.
+            <Link
+              to="/docs/schutzmechanismen"
+              className="text-yellow-400 hover:text-yellow-300"
+            >
+              Schutzmechanismen
+            </Link>{' '}
+            an.
           </Paragraph>
         </div>
         <div

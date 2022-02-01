@@ -4,6 +4,8 @@ import JSONPretty from 'react-json-prettify';
 import { dracula } from 'react-json-prettify/dist/themes';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
+const TLS_ACTIVE = JSON.parse(process.env['REACT_APP_SERVER_HTTPS']);
+
 async function fetchData(url) {
   const data = await fetch(url);
   const json = await data.json();
@@ -53,7 +55,7 @@ export function ConsolePage() {
             return;
 
           case 'help':
-            navigate('/docs/mitmkonsole');
+            navigate('/docs/konsole');
             return;
 
           case 'read':
@@ -141,7 +143,15 @@ export function ConsolePage() {
   }
 
   return (
-    <div className="h-screen bg-dark text-white w-full flex flex-col justify-center items-center space-y-5 pb-5 relative">
+    <div
+      className={`h-screen bg-dark text-white w-full flex flex-col justify-center items-center space-y-5 pb-5 relative ${
+        location !== '/'
+          ? `bg-gradient-to-tr from-ebony-700 via-ebony-700 ${
+              TLS_ACTIVE ? 'to-green-900' : 'to-pink-900'
+            } animate-gradient-y`
+          : ''
+      }`}
+    >
       {location !== '/' && (
         <Link
           to="/"
@@ -160,7 +170,7 @@ export function ConsolePage() {
           <div className="inline-flex font-mono">
             user@root {'  '} ~ $ {'  '}
             <Typical
-              steps={['packets', 2000, 'expose cert', 5000]}
+              steps={['packets', 2000, 'expose cert', 2000, 'help', 5000]}
               loop={Infinity}
               className="mx-4"
             />

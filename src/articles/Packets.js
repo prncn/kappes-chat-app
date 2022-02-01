@@ -58,13 +58,12 @@ export function Packets() {
         </Heading>
         <Heading sub>Betrachtung von Datenpaketen.</Heading>
         <Paragraph>
-          Ein Datenpaket oder einfach „Paket“ ist in der Datenverarbeitung eine
-          der Bezeichnungen für in sich geschlossene Dateneinheiten, die ein
-          Sender oder ein sendender Prozess einem Empfänger sendet. Das
-          OSI-Schichtenmodell ist für solche Pakete kaum sinnvoll, da 4 von 7
-          OSI-Schichten (Anwendungsschicht, Darstellungsschicht,
-          Sitzungsschicht, Transportschicht und ) hier belanglos sind und nicht
-          implementiert werden.
+          Das IP-Paket oder exakt Internet Protocol Datagram ist das
+          Grundelement der Internet-Datenkommunikation. Es besteht immer aus
+          zwei Teilen: den Kopfdaten, die Informationen über Quelle, Ziel,
+          Status, Fragmentierung usw. enthalten, und den Nutzdaten. Das
+          Protokoll TCP zum Beispiel befindet sich ausschließlich in den
+          Nutzdaten des IP-Pakets – eine Schicht weiter oben im OSI-Modell.
         </Paragraph>
         <Paragraph>
           Platzier die Maus über die Segmente des Buffers unten, um zu sehen,
