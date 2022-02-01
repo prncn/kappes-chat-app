@@ -53,9 +53,11 @@ export default function Main() {
                 <span>Docs</span>
               </button>
             </Link>
-            <button className="rounded px-10 py-4 border border-white text-white hover:bg-ebony-900">
-              <span>Github</span>
-            </button>
+            <a href="https://github.com/prncn/mitm-demo-app">
+              <button className="rounded px-10 py-4 border border-white text-white hover:bg-ebony-900">
+                <span>Github</span>
+              </button>
+            </a>
           </div>
         </div>
         <div
@@ -90,14 +92,12 @@ export default function Main() {
             dieser Seite zu bringen. Wir schauen uns dafür an, wie das Protokoll
             http ausgebaut ist und zeigen mithilfe der Tools „Wireshark“ und
             „Burp Suite Community“ Angriffe auf die unsichere Version der
-            Website. Eine virtuelle Maschine ist in Kapitel ___ mitgeliefert und
-            ermöglicht das selbständige Testen der Angriffe. Die Durchführung
-            der Angriffe wird in kommenden Kapiteln mit Videos und
-            Hintergrundinformationen erläutert. Durch unsere interaktive Konsole
-            ist es jedem möglich, neben den oben genannten Tools die Angriffe
-            auch direkt auf der Seite durchführen zu können. Gegen Ende erklären
-            wir neben der HTTPS-Verschlüsselung weitere Schutzmechanismen, um
-            die eigene Seite sicherer zu gestalten.
+            Website. Die Durchführung der Angriffe wird in kommenden Kapiteln
+            mit Videos und Hintergrundinformationen erläutert. Durch unsere
+            interaktive Konsole ist es jedem möglich, neben den oben genannten
+            Tools die Angriffe auch direkt auf der Seite durchführen zu können.
+            Gegen Ende erklären wir neben der HTTPS-Verschlüsselung weitere
+            Schutzmechanismen, um die eigene Seite sicherer zu gestalten.
           </p>
         </div>
       </div>
@@ -142,6 +142,9 @@ export default function Main() {
       </div>
       <ChatApp />
       <ConsolePage />
+      <div className={`hidden bg-card-0`} />
+      <div className={`hidden bg-card-3`} />
+      <div className={`hidden bg-card-4`} />
     </div>
   );
 }

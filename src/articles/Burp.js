@@ -1,4 +1,5 @@
 import ReactPlayer from 'react-player';
+import { Link } from 'react-router-dom';
 import { Heading, Paragraph } from '../pages/Docs';
 
 export function Burp() {
@@ -51,7 +52,13 @@ export function Burp() {
             Wir können auch einen Browser unserer Wahl öffnen, müssen dafür aber
             zusätzliche Konfigurationen einrichten. Im eingebauten Browser
             öffnen wir nun unsere Chat-App in zwei Tabs, damit wir eine
-            Konversation simulieren können. Dafür benutzen wir den Link:_______.
+            Konversation simulieren können.{' '}
+            <Link
+              to="/chatapp"
+              className="text-yellow-400 hover:text-yellow-300"
+            >
+              Hier könnt ihr die Chat-App öffnen.
+            </Link>
             Wir schreiben in einem Tab die Nachricht „Hallo Mike“ und senden
             diese ab. Die Nachricht wird in demselben Tab auch als verschickt
             angezeigt, im Empfänger Tab aber nicht. In Burp drücken wir nun auf
@@ -61,13 +68,15 @@ export function Burp() {
           </Paragraph>
           <Heading>Erweiterung des Angriffs</Heading>
           <Paragraph>
-            In Kapitel ____ zeigen wir eine Erweiterung dieses Angriffs durch
-            das Verschicken identisch aufgebauten PayPal-Seite, um zusätzlich
-            die Bankdaten abzufangen. Schließlich geht der Empfänger davon aus,
-            mit der eigentlichen Person zu sprechen und erwartet weniger eine
+            In Kapitel <Link to="/docs/spoofing">Spoofing und Phishing</Link>{' '}
+            zeigen wir eine Erweiterung dieses Angriffs durch das Verschicken
+            einer identisch aufgebauten PayPal-Seite, um zusätzlich die
+            Bankdaten abzufangen. Schließlich geht der Empfänger davon aus, mit
+            der eigentlichen Person zu sprechen und erwartet weniger eine
             Modifikation der Nachrichten. Außerdem schauen wir uns, genau wie
             beim Thema Wireshark, Schutzmöglichkeiten aus Benutzer- und
-            Entwicklersicht in Kapitel ___ an.
+            Entwicklersicht in Kapitel{' '}
+            <Link to="/docs/schutzmechanismen">Schutzmechanismen</Link> an.
           </Paragraph>
         </div>
         <div

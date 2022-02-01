@@ -24,9 +24,6 @@ export function NotFound() {
       <div
         className={`absolute bottom-0 bg-cover bg-no-repeat w-96 rounded-xl bg-card-1 h-96 overflow-hidden`}
       />
-      <div className={`hidden bg-card-0`} />
-      <div className={`hidden bg-card-3`} />
-      <div className={`hidden bg-card-4`} />
     </div>
   );
 }
