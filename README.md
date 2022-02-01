@@ -1,25 +1,25 @@
-### MITM Educational App
+# MITM Educational App
 
 ## FRA UAS Informatik Projekt WS21/22
 
-# Was ist das
+### Was ist das
 
 Eine React/Node App zur Demonstrierung von "Man in the Middle" Attacken durch Proxys.
 Diese App enthält einen Kurs zur thematischen Einführung über relavante Themen (Docs)
 und eine interaktive Pseudo-Bash Konsole zur Manipulation von Client Daten (MITM Console).
 
-## Installation
+### Installation
 
 Ihr habt zwei Optionen die App zu verwenden. Entweder innerhalb der mitgegebenen virtuellen
 Maschine (empfohlen), oder direkt auf euer Host System.
 
-# VM Image Option
+### VM Image Option
 
 1. Im Ordner "Image Option", befindet sich ein virtuelles Windows Image.
 2. Bindet die Image in Virtual Box ein.
 3. Startet die VM. Fertig.
 
-# Host Option
+### Host Option
 
 1. Ladet folgende Software herunter:
    a. [NodeJS LTS](https://nodejs.org/en/download/)
