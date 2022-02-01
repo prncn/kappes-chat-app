@@ -43,4 +43,4 @@ Maschine (empfohlen), oder direkt auf euer Host System.
 
 4. Falls der Launcher nicht funktioniert, navigiert zum "mitm-demo-app" Ordner und führt den Command "npm run demo"
    als Command Line (Eingabeaufforderung) oder PowerShell (Im "mitm-demo-app" Ordner
-   mit Shift+Rechtsklick die Option "PowerShell hier öffnen" benutzt) aus.
+   mit Shift+Rechtsklick die Option "PowerShell hier öffnen") aus.
