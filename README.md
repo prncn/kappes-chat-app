@@ -20,9 +20,10 @@ Maschine (empfohlen), oder direkt auf euer Host System.
 
 ### Host Option
 
+0. Entpackt den komprimierten Ordner "TeamPlatinDemoOption2.rar" 
 1. Ladet folgende Software herunter:
    <br/>a. [NodeJS LTS](https://nodejs.org/en/download/)
-   <br/>b. (Nur für Windows, bereits vorinstalliert auf Linux) [Ncap for Windows](https://npcap.com/#download)
+   <br/>b. [Ncap for Windows](https://npcap.com/#download)
 
 2. (Windows) Ändert eure Host Datei folgendermaßen ab:
    Unter `C:\Windows\System32\drivers\etc` findet ihr die Datei `hosts`.
@@ -40,4 +41,6 @@ Maschine (empfohlen), oder direkt auf euer Host System.
    ```
    ![image](https://i.imgur.com/pG5mqEP.gif)
 
-4. Im Ordner "Host Option", startet das PowerShell Skript. Fertig.
+4. Falls der Launcher nicht funktioniert, navigiert zum "mitm-demo-app" Ordner und führt den Command "npm run demo"
+   als Command Line (Eingabeaufforderung) oder PowerShell (Im "mitm-demo-app" Ordner
+   mit Shift+Rechtsklick die Option "PowerShell hier öffnen" benutzt) aus.
