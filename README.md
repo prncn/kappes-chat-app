@@ -1,6 +1,11 @@
 ## MITM React App
 
-Eine React/Node App zur Demonstrierung von "Man in the Middle" Attacken durch Proxys.
+Eine React/Node App zur Demonstrierung von "Man in the Middle" Attacken durch ein Proxy Server. <br/>
+Das Ziel der Demo ist es, MITM Angriffe zu testen und Mechanismen des Angriffs und 
+des Schutzes zu verstehen. Zudem werdet ihr testen können, inwiefern sich eine HTTPS 
+Verschlüsselung auf die MITM-Angriffe des Proxy-Servers auswirkt. <br/>
+Unsere App ermöglicht es, beispielsweise Daten unseres integrierten Chat-Messengers durch die MITM Konsole
+abzufangen und zu manipulieren. <br/>
 Diese App enthält einen Kurs zur thematischen Einführung über relavante Themen (Docs)
 und eine interaktive Pseudo-Bash Konsole zur Manipulation von Client Daten (MITM Console).
 
@@ -15,7 +20,6 @@ Maschine (empfohlen), oder direkt auf euerem Host System.
 2. Importiert die `.ova` Datei in Virtual Box. <br/>
 ![image](https://i.imgur.com/7ARoX1y.gif)
 3. Startet die VM. Benutzt beim Login das Passwort `0202`. Fertig.
-
 
 
 ### Host Option
@@ -43,7 +47,8 @@ Maschine (empfohlen), oder direkt auf euerem Host System.
    ![image](https://i.imgur.com/pG5mqEP.gif)
 
 4. Entpackt den komprimierten Ordner "TeamPlatinDemoOption2.rar" 
-5. Falls der Launcher nicht funktioniert, navigiert zum "mitm-demo-app" Ordner und führt den Command "npm run demo"
+5. Installiert [Wireshark](https://www.wireshark.org/download.html) (Packet Sniffing Tool) und [Burp](https://portswigger.net/burp/releases/professional-community-2021-12-1?requestededition=community) (MITM Tool). Beide Features, Paket Sniffing und MITM Attacken, sind auch in unserer eigenen App verfügbar.
+6. Falls der Launcher nicht funktioniert, navigiert zum "mitm-demo-app" Ordner und führt den Command "npm run demo"
    als Command Line (Eingabeaufforderung) oder PowerShell (Im "mitm-demo-app" Ordner
    mit Shift+Rechtsklick die Option "PowerShell hier öffnen") aus.
   
