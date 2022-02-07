@@ -16,13 +16,18 @@ Maschine (empfohlen), oder direkt auf euerem Host System.
 
 ### VM Image Option
 
+Der Vorteil dieser enkapsulierten Installation ist, dass diese weniger fehleranfällig ist. Zudem
+müsst ihr keine Einstellungen in eurem Host System vornehmen.
+
 1. Im Projekt Upload befindet sich ein virtuelles Windows Image `KappesProjekt.ova`.
 2. Importiert die `.ova` Datei in Virtual Box. <br/>
 ![image](https://i.imgur.com/7ARoX1y.gif)
-3. Startet die VM. Benutzt beim Login das Passwort `0202`. Fertig.
+3. Startet die VM. Benutzt beim Login das Passwort `0202`. Auf dem Desktop sollte sich ein Launcher Skript `start mitm demo.bat` befinden. Fertig.
 
 
 ### Host Option
+
+Der Vorteil dieser manuellen Installation ist, dass ihr weniger Daten herunterladen müsst (4MB im Vergleich zu 16GB).
 
 1. Ladet folgende Software herunter:
    <br/>a. [NodeJS LTS](https://nodejs.org/en/download/)
@@ -46,9 +51,9 @@ Maschine (empfohlen), oder direkt auf euerem Host System.
    ```
    ![image](https://i.imgur.com/pG5mqEP.gif)
 
-4. Entpackt den komprimierten Ordner "TeamPlatinDemoOption2.rar" 
+4. Entpackt den komprimierten Ordner "TeamPlatinDemoOption2.rar" ODER ladet diese Git Repository herunter ODER klont die Repository. 
 5. Installiert [Wireshark](https://www.wireshark.org/download.html) (Packet Sniffing Tool) und [Burp](https://portswigger.net/burp/releases/professional-community-2021-12-1?requestededition=community) (MITM Tool). Beide Features, Paket Sniffing und MITM Attacken, sind auch in unserer eigenen App verfügbar.
-6. Falls der Launcher nicht funktioniert, navigiert zum "mitm-demo-app" Ordner und führt den Command "npm run demo"
+6. Falls der Launcher nicht funktioniert, navigiert zum "mitm-demo-app" Ordner und führt die Commands `npm install` (nur beim erstmaligen Starten) und dann `npm run demo`
    als Command Line (Eingabeaufforderung) oder PowerShell (Im "mitm-demo-app" Ordner
    mit Shift+Rechtsklick die Option "PowerShell hier öffnen") aus.
   
@@ -63,6 +68,11 @@ Die App lädt nicht, wieso?
 ```
 Unter Umständen, müsst ihr das Browserfenster oder das Skript neu starten. Die HTTPS Version der Demo
 braucht etwa eine halbe Minute zum starten.
+
+```
+Die HTTPS Version startet, aber nicht die HTTP Version (Auf Host).
+```
+Beim erstmaligen Starten der App müsst ihr den Command `npm install` ausführen.
 
 ### *Hinweise
 
